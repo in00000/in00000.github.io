@@ -1,0 +1,26 @@
+[
+  {
+    "name": "VIP Vendor 1",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vip-vendor-1/"
+  },
+  {
+    "name": "VIP Vendor 2",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vip-vendor-2/"
+  },
+  {
+    "name": "VIP Vendor 3",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vip-vendor-3/"
+  }
+]
