@@ -1,10 +1,82 @@
 [
   {
-    "name": "Sample Vendor One",
-    "tagline": "Short one-line description of their service",
-    "category": "Category Name",
-    "city": "City Name",
+    "name": "Vendor 1 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
     "whatsapp": "919999999999",
-    "url": "https://www.csvn.in/listings/sample-vendor-one/"
+    "url": "https://www.csvn.in/listings/vendor-1-slug/"
+  },
+  {
+    "name": "Vendor 2 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-2-slug/"
+  },
+  {
+    "name": "Vendor 3 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-3-slug/"
+  },
+  {
+    "name": "Vendor 4 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-4-slug/"
+  },
+  {
+    "name": "Vendor 5 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-5-slug/"
+  },
+  {
+    "name": "Vendor 6 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-6-slug/"
+  },
+  {
+    "name": "Vendor 7 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-7-slug/"
+  },
+  {
+    "name": "Vendor 8 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-8-slug/"
+  },
+  {
+    "name": "Vendor 9 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-9-slug/"
+  },
+  {
+    "name": "Vendor 10 Name",
+    "tagline": "Short one-line description",
+    "category": "Category",
+    "city": "City",
+    "whatsapp": "919999999999",
+    "url": "https://www.csvn.in/listings/vendor-10-slug/"
   }
 ]
