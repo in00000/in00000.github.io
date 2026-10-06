@@ -1,6 +1,6 @@
 ---
 title: "List Your Business"
-description: "Get your business listed on CSVN — India's B2B service provider directory. Plans from ₹999/year. Make your services discoverable to decision-makers across India."
+description: "Get your business listed on CSVN — India's B2B visibility and promotion network. Three founding plans, 70 slots total. Make your services discoverable to decision-makers across India."
 layout: "page"
 ---
 
@@ -8,9 +8,9 @@ layout: "page"
 
 <!-- ============ HERO ============ -->
 <div style="background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 55%, #7c3aed 100%); border-radius: 20px; padding: 40px 32px; margin: 24px 0 32px; color: #ffffff; position: relative; overflow: hidden; box-shadow: 0 24px 48px -16px rgba(79,70,229,0.45);">
-  <div style="display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 20px;">For B2B Vendors in India</div>
+  <div style="display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.2); margin-bottom: 20px;">Founding Round — 70 Slots Only</div>
   <h1 style="font-size: clamp(26px, 4vw, 36px); font-weight: 900; letter-spacing: -0.03em; margin: 0 0 12px; line-height: 1.15; color: #ffffff;">Grow Your B2B Business with CSVN</h1>
-  <p style="font-size: 15px; color: #e0e7ff; margin: 0 0 24px; max-width: 620px; line-height: 1.6;">Get discovered by procurement heads, facility managers, HR leaders, and decision-makers across India. Plans from <strong style="color:#ffffff;">₹999/year</strong>. Zero commission on closed deals.</p>
+  <p style="font-size: 15px; color: #e0e7ff; margin: 0 0 24px; max-width: 620px; line-height: 1.6;">Get discovered by procurement heads, facility managers, HR leaders, and decision-makers across India. Founding plans from <strong style="color:#ffffff;">₹3,999</strong> — with Executive Digest, email, and business network promotion included. Zero commission on closed deals.</p>
   <div style="display: flex; gap: 24px; flex-wrap: wrap; font-size: 13px; color: #ffffff; font-weight: 500;">
     <span>✓ Direct buyer contact</span>
     <span>✓ No commission on deals</span>
@@ -20,7 +20,7 @@ layout: "page"
 
 <!-- ============ WHO SEES YOUR LISTING ============ -->
 <h2 style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; margin: 40px 0 8px;">Who Sees Your Listing</h2>
-<p style="font-size: 14px; color: #64748b; margin: 0 0 20px;">Decision-makers across India browse CSVN daily. When you list, your business appears in front of:</p>
+<p style="font-size: 14px; color: #64748b; margin: 0 0 20px;">Decision-makers across India browse CSVN. When you list, your business appears in front of:</p>
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; margin-bottom: 32px;">
   <div style="background: #f8fafc; border-left: 3px solid #4f46e5; padding: 12px 16px; border-radius: 8px;">
@@ -50,8 +50,8 @@ layout: "page"
 </div>
 
 <!-- ============ CHOOSE YOUR PLAN ============ -->
-<h2 style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; margin: 40px 0 8px;">Choose Your Plan</h2>
-<p style="font-size: 14px; color: #64748b; margin: 0 0 20px;">Three plans. One goal — put your business in front of decision-makers.</p>
+<h2 style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; margin: 40px 0 8px;">Choose Your Founding Plan</h2>
+<p style="font-size: 14px; color: #64748b; margin: 0 0 20px;">Three founding plans. 70 slots total. When a tier sells out, that price is permanently closed.</p>
 
 <div style="overflow-x: auto; margin-bottom: 12px;">
   <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(15,23,42,0.06);">
@@ -60,27 +60,31 @@ layout: "page"
         <th style="padding: 14px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em;">Plan</th>
         <th style="padding: 14px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em;">Price</th>
         <th style="padding: 14px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em;">Validity</th>
+        <th style="padding: 14px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em;">Slots</th>
         <th style="padding: 14px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em;">Best For</th>
       </tr>
     </thead>
     <tbody>
       <tr style="border-bottom: 1px solid #f1f5f9;">
-        <td style="padding: 16px; font-weight: 800; color: #0f172a;">Starter</td>
-        <td style="padding: 16px; font-weight: 800; color: #4f46e5; font-size: 15px;">₹999</td>
-        <td style="padding: 16px; color: #334155;">1 year</td>
-        <td style="padding: 16px; color: #64748b;">Small vendors testing network reach and reliable B2B exposure</td>
+        <td style="padding: 16px; font-weight: 800; color: #0f172a;">Founding Entry</td>
+        <td style="padding: 16px; font-weight: 800; color: #4f46e5; font-size: 15px;">₹3,999</td>
+        <td style="padding: 16px; color: #334155;">5 years <span style="color: #94a3b8; font-size: 12px;">(~₹67/mo)</span></td>
+        <td style="padding: 16px; color: #334155;">50</td>
+        <td style="padding: 16px; color: #64748b;">Vendors wanting a long runway at a founder's price</td>
       </tr>
       <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbff;">
-        <td style="padding: 16px; font-weight: 800; color: #0f172a;">Featured Pro <span style="display: inline-block; background: #4f46e5; color: #ffffff; font-size: 9px; font-weight: 800; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 100px; text-transform: uppercase; vertical-align: middle; margin-left: 4px;">Popular</span></td>
-        <td style="padding: 16px; font-weight: 800; color: #4f46e5; font-size: 15px;">₹4,999</td>
-        <td style="padding: 16px; color: #334155;">2 years <span style="color: #94a3b8; font-size: 12px;">(~₹208/mo)</span></td>
-        <td style="padding: 16px; color: #64748b;">Growing vendors seeking continuous, automated exposure</td>
+        <td style="padding: 16px; font-weight: 800; color: #0f172a;">Founding Featured <span style="display: inline-block; background: #4f46e5; color: #ffffff; font-size: 9px; font-weight: 800; letter-spacing: 0.05em; padding: 2px 7px; border-radius: 100px; text-transform: uppercase; vertical-align: middle; margin-left: 4px;">Popular</span></td>
+        <td style="padding: 16px; font-weight: 800; color: #4f46e5; font-size: 15px;">₹6,999</td>
+        <td style="padding: 16px; color: #334155;">3 years <span style="color: #94a3b8; font-size: 12px;">(~₹194/mo)</span></td>
+        <td style="padding: 16px; color: #334155;">15</td>
+        <td style="padding: 16px; color: #64748b;">Growing vendors who want Top 3 category placement now</td>
       </tr>
       <tr>
-        <td style="padding: 16px; font-weight: 800; color: #0f172a;">VIP Leader</td>
+        <td style="padding: 16px; font-weight: 800; color: #0f172a;">Founding VIP</td>
         <td style="padding: 16px; font-weight: 800; color: #4f46e5; font-size: 15px;">₹9,999</td>
-        <td style="padding: 16px; color: #334155;">2 years <span style="color: #94a3b8; font-size: 12px;">(~₹416/mo)</span></td>
-        <td style="padding: 16px; color: #64748b;">Market leaders demanding premium position and homepage reach</td>
+        <td style="padding: 16px; color: #334155;">3 years <span style="color: #94a3b8; font-size: 12px;">(~₹278/mo)</span></td>
+        <td style="padding: 16px; color: #334155;">5</td>
+        <td style="padding: 16px; color: #64748b;">Market leaders wanting homepage reach + premium promotion</td>
       </tr>
     </tbody>
   </table>
@@ -104,9 +108,9 @@ layout: "page"
     <div style="font-size: 13px; color: #64748b; line-height: 1.6;">Listings rotate within their tier or pool. No listing is permanently buried at the bottom.</div>
   </div>
   <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
-    <div style="width: 36px; height: 36px; border-radius: 10px; background: #eef2ff; color: #4f46e5; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; margin-bottom: 12px;">✓</div>
-    <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Listed Badge</div>
-    <div style="font-size: 13px; color: #64748b; line-height: 1.6;">Your profile displays a CSVN Listed badge after our listing review — a signal to buyers that your profile is published.</div>
+    <div style="width: 36px; height: 36px; border-radius: 10px; background: #eef2ff; color: #4f46e5; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; margin-bottom: 12px;">📣</div>
+    <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Promotional Reach</div>
+    <div style="font-size: 13px; color: #64748b; line-height: 1.6;">Every plan includes rotating promotion through the Executive Digest, email outreach, and our business leaders professional network.</div>
   </div>
   <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
     <div style="width: 36px; height: 36px; border-radius: 10px; background: #eef2ff; color: #4f46e5; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; margin-bottom: 12px;">₹</div>
@@ -128,18 +132,18 @@ layout: "page"
     </thead>
     <tbody>
       <tr style="border-bottom: 1px solid #f1f5f9;">
-        <td style="padding: 14px 16px; font-weight: 800; color: #0f172a;">Starter</td>
+        <td style="padding: 14px 16px; font-weight: 800; color: #0f172a;">Founding Entry</td>
         <td style="padding: 14px 16px; color: #334155;">Standard tier</td>
-        <td style="padding: 14px 16px; color: #64748b;">Category pages (below Pro and VIP)</td>
+        <td style="padding: 14px 16px; color: #64748b;">Category pages (below Featured and VIP)</td>
       </tr>
-      <tr style="border-bottom: 1px solid #f1f5f9;">
-        <td style="padding: 14px 16px; font-weight: 800; color: #0f172a;">Featured Pro</td>
-        <td style="padding: 14px 16px; color: #334155;"><span style="background: #eef2ff; color: #4f46e5; padding: 3px 10px; border-radius: 100px; font-size: 11.5px; font-weight: 800;">Top 10 Pool</span></td>
-        <td style="padding: 14px 16px; color: #64748b;">Top 10 positions on category pages</td>
+      <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbff;">
+        <td style="padding: 14px 16px; font-weight: 800; color: #0f172a;">Founding Featured</td>
+        <td style="padding: 14px 16px; color: #334155;"><span style="background: #eef2ff; color: #4f46e5; padding: 3px 10px; border-radius: 100px; font-size: 11.5px; font-weight: 800;">Top 3 Pool</span></td>
+        <td style="padding: 14px 16px; color: #64748b;">Top 3 positions on category pages</td>
       </tr>
       <tr>
-        <td style="padding: 14px 16px; font-weight: 800; color: #0f172a;">VIP Leader</td>
-        <td style="padding: 14px 16px; color: #334155;"><span style="background: #0f172a; color: #fbbf24; padding: 3px 10px; border-radius: 100px; font-size: 11.5px; font-weight: 800;">Top 3 Pool</span></td>
+        <td style="padding: 14px 16px; font-weight: 800; color: #0f172a;">Founding VIP</td>
+        <td style="padding: 14px 16px; color: #334155;"><span style="background: #0f172a; color: #fbbf24; padding: 3px 10px; border-radius: 100px; font-size: 11.5px; font-weight: 800;">Top 3 Pool + Homepage</span></td>
         <td style="padding: 14px 16px; color: #64748b;">Top 3 positions + homepage featured slider</td>
       </tr>
     </tbody>
@@ -215,8 +219,8 @@ layout: "page"
   <div style="display: flex; gap: 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 20px;">
     <div style="width: 32px; height: 32px; border-radius: 50%; background: #4f46e5; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0;">1</div>
     <div>
-      <div style="font-size: 14px; font-weight: 800; color: #0f172a;">Choose your plan</div>
-      <div style="font-size: 13px; color: #64748b; margin-top: 3px;">Starter ₹999, Featured Pro ₹4,999, or VIP Leader ₹9,999.</div>
+      <div style="font-size: 14px; font-weight: 800; color: #0f172a;">Choose your founding plan</div>
+      <div style="font-size: 13px; color: #64748b; margin-top: 3px;">Founding Entry ₹3,999 / 5 yrs, Founding Featured ₹6,999 / 3 yrs, or Founding VIP ₹9,999 / 3 yrs.</div>
     </div>
   </div>
   <div style="display: flex; gap: 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 20px;">
@@ -237,30 +241,30 @@ layout: "page"
     <div style="width: 32px; height: 32px; border-radius: 50%; background: #4f46e5; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0;">4</div>
     <div>
       <div style="font-size: 14px; font-weight: 800; color: #0f172a;">Pay for your plan</div>
-      <div style="font-size: 13px; color: #64748b; margin-top: 3px;">UPI on our <a href="/payment/" style="color: #4f46e5; font-weight: 700; text-decoration: none;">payment page</a>. Bank transfer (NEFT/IMPS) available on request for Pro &amp; VIP.</div>
+      <div style="font-size: 13px; color: #64748b; margin-top: 3px;">UPI on our <a href="/payment/" style="color: #4f46e5; font-weight: 700; text-decoration: none;">payment page</a>. Bank transfer (NEFT/IMPS) available on request for Featured and VIP.</div>
     </div>
   </div>
   <div style="display: flex; gap: 16px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 20px;">
     <div style="width: 32px; height: 32px; border-radius: 50%; background: #4f46e5; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; flex-shrink: 0;">5</div>
     <div>
       <div style="font-size: 14px; font-weight: 800; color: #0f172a;">Your listing goes live</div>
-      <div style="font-size: 13px; color: #64748b; margin-top: 3px;">Within 4 business days of payment verification. You'll get your listing URL and receipt by email.</div>
+      <div style="font-size: 13px; color: #64748b; margin-top: 3px;">Within 4 business days of payment verification. You'll get your listing URL and receipt by email. Founding VIP homepage rotation begins in the same window.</div>
     </div>
   </div>
 </div>
 
 <!-- ============ WHAT'S INCLUDED ============ -->
 <h2 style="font-size: 22px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; margin: 40px 0 8px;">What Your Listing Includes</h2>
-<p style="font-size: 14px; color: #64748b; margin: 0 0 20px;">Every CSVN profile gets the essentials. Higher tiers add placement and promotion.</p>
+<p style="font-size: 14px; color: #64748b; margin: 0 0 20px;">Every CSVN profile gets the essentials. Higher tiers add placement and promotional priority.</p>
 
 <div style="overflow-x: auto; margin-bottom: 12px;">
   <table style="width: 100%; border-collapse: collapse; font-size: 13.5px; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(15,23,42,0.06);">
     <thead>
       <tr style="background: #f8fafc;">
         <th style="padding: 12px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; text-align: left;">Feature</th>
-        <th style="padding: 12px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">Starter</th>
-        <th style="padding: 12px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">Featured Pro</th>
-        <th style="padding: 12px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">VIP Leader</th>
+        <th style="padding: 12px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">Entry</th>
+        <th style="padding: 12px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">Featured ⭐</th>
+        <th style="padding: 12px 16px; border-bottom: 2px solid #e2e8f0; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; text-align: center;">VIP 👑</th>
       </tr>
     </thead>
     <tbody>
@@ -301,16 +305,16 @@ layout: "page"
         <td style="padding: 13px 16px; text-align: center; color: #10b981; font-weight: 800;">✓</td>
       </tr>
       <tr style="border-bottom: 1px solid #f1f5f9;">
-        <td style="padding: 13px 16px; color: #334155;">Listed badge</td>
+        <td style="padding: 13px 16px; color: #334155;">Founding Vendor badge</td>
         <td style="padding: 13px 16px; text-align: center; color: #10b981; font-weight: 800;">✓</td>
         <td style="padding: 13px 16px; text-align: center; color: #10b981; font-weight: 800;">✓</td>
         <td style="padding: 13px 16px; text-align: center; color: #10b981; font-weight: 800;">✓</td>
       </tr>
       <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbff;">
         <td style="padding: 13px 16px; color: #334155;">Listing validity</td>
-        <td style="padding: 13px 16px; text-align: center; color: #334155;">1 year</td>
-        <td style="padding: 13px 16px; text-align: center; color: #334155;">2 years</td>
-        <td style="padding: 13px 16px; text-align: center; color: #334155;">2 years</td>
+        <td style="padding: 13px 16px; text-align: center; color: #334155;">5 years</td>
+        <td style="padding: 13px 16px; text-align: center; color: #334155;">3 years</td>
+        <td style="padding: 13px 16px; text-align: center; color: #334155;">3 years</td>
       </tr>
       <tr style="border-bottom: 1px solid #f1f5f9;">
         <td style="padding: 13px 16px; color: #334155;">Catalogue links</td>
@@ -319,22 +323,34 @@ layout: "page"
         <td style="padding: 13px 16px; text-align: center; color: #334155;">Multiple</td>
       </tr>
       <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbff;">
-        <td style="padding: 13px 16px; color: #334155;">Category rotation pool</td>
+        <td style="padding: 13px 16px; color: #334155;"><strong>Category rotation pool</strong></td>
         <td style="padding: 13px 16px; text-align: center; color: #334155;">Standard</td>
-        <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Top 10</td>
+        <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Top 3</td>
         <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Top 3</td>
       </tr>
       <tr style="border-bottom: 1px solid #f1f5f9;">
+        <td style="padding: 13px 16px; color: #334155;"><strong>Executive Digest inclusion</strong></td>
+        <td style="padding: 13px 16px; text-align: center; color: #334155;">Rotating</td>
+        <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Priority</td>
+        <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Premium priority</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbff;">
+        <td style="padding: 13px 16px; color: #334155;"><strong>Email promotion</strong></td>
+        <td style="padding: 13px 16px; text-align: center; color: #334155;">Rotating</td>
+        <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Priority</td>
+        <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Premium priority</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #f1f5f9;">
+        <td style="padding: 13px 16px; color: #334155;"><strong>Business leaders network promotion</strong></td>
+        <td style="padding: 13px 16px; text-align: center; color: #334155;">Rotating</td>
+        <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Priority</td>
+        <td style="padding: 13px 16px; text-align: center; color: #4f46e5; font-weight: 800;">Premium priority</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbff;">
         <td style="padding: 13px 16px; color: #334155;">Homepage featured rotation</td>
         <td style="padding: 13px 16px; text-align: center; color: #cbd5e1;">—</td>
         <td style="padding: 13px 16px; text-align: center; color: #cbd5e1;">—</td>
         <td style="padding: 13px 16px; text-align: center; color: #10b981; font-weight: 800;">✓</td>
-      </tr>
-      <tr style="border-bottom: 1px solid #f1f5f9; background: #fafbff;">
-        <td style="padding: 13px 16px; color: #334155;">Monthly HR Digest mentions</td>
-        <td style="padding: 13px 16px; text-align: center; color: #cbd5e1;">—</td>
-        <td style="padding: 13px 16px; text-align: center; color: #334155;">24</td>
-        <td style="padding: 13px 16px; text-align: center; color: #334155;">24 (Top Partner Spotlight)</td>
       </tr>
       <tr style="border-bottom: 1px solid #f1f5f9;">
         <td style="padding: 13px 16px; color: #334155;">Priority search placement</td>
@@ -373,8 +389,8 @@ layout: "page"
 <div style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #ffffff; margin-bottom: 40px;">
 
   <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9;">
-    <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Why do plans start at ₹999?</div>
-    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">Starter is designed to make CSVN accessible to every business. Featured Pro and VIP Leader are for vendors who want stronger placement, longer validity, and promotional reach. <a href="/pricing/" style="color: #4f46e5; font-weight: 700; text-decoration: none;">See full pricing →</a></div>
+    <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">What is the Founding Round?</div>
+    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">Our first and only discounted pricing. We are onboarding 70 vendors total — 50 Entry, 15 Featured, 5 VIP — at founder's rates before standard pricing opens. When the slots are gone, these prices are permanently closed. <a href="/pricing/" style="color: #4f46e5; font-weight: 700; text-decoration: none;">See full pricing →</a></div>
   </div>
 
   <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9; background: #fafbff;">
@@ -394,43 +410,48 @@ layout: "page"
 
   <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9;">
     <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Will I get enquiries?</div>
-    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">We can't guarantee enquiries — that depends on buyer demand, your category, and your profile. What we provide is a professional listing visible to decision-makers browsing the platform. Every listing gets rotation within its tier or pool for fair placement.</div>
+    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">We can't guarantee enquiries — that depends on buyer demand, your category, and your profile. What we provide is a professional listing visible to decision-makers, plus rotating promotional inclusion through the Executive Digest, email outreach, and business leaders network. Every listing rotates for fair placement within its tier or pool.</div>
   </div>
 
   <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9; background: #fafbff;">
-    <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">What is the difference between the rotation pools?</div>
-    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">Starter listings rotate across Standard-tier listings in a category. Featured Pro rotates within the <strong>Top 10</strong> positions of the category page. VIP Leader rotates within the <strong>Top 3</strong> positions and is also included in the homepage featured slider.</div>
+    <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">What's the difference between Entry and Featured?</div>
+    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">Founding Entry gives you a longer runway (5 years) with standard category placement and rotating promotional inclusion. Founding Featured gives you <strong>Top 3 category rotation</strong> and <strong>priority</strong> inclusion in the Executive Digest, email outreach, and business leaders network — for 3 years. You're paying for visibility and priority, not just time.</div>
   </div>
 
   <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9;">
+    <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">What does Founding VIP add over Founding Featured?</div>
+    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">Founding VIP adds <strong>homepage featured slider rotation</strong> and <strong>premium priority</strong> inclusion in the Executive Digest, email outreach, and business leaders network. Only 5 VIP slots exist.</div>
+  </div>
+
+  <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9; background: #fafbff;">
     <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Do I need GST to list?</div>
     <div style="font-size: 13px; color: #64748b; line-height: 1.65;">No. No plan requires GST. We'll issue a simple payment receipt. If you have GST, provide it and we'll include it in your receipt.</div>
   </div>
 
-  <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9; background: #fafbff;">
+  <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9;">
     <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">Can I upgrade later?</div>
-    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">Yes — you can upgrade from Starter to Featured Pro or VIP Leader at any time by paying the difference. Email us with your business name and the plan you want to upgrade to.</div>
+    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">Yes — you can upgrade from Founding Entry to Founding Featured or Founding VIP at any time by paying the difference. Email us with your business name and the plan you want to upgrade to.</div>
   </div>
 
-  <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9;">
+  <div style="padding: 18px 22px; border-bottom: 1px solid #f1f5f9; background: #fafbff;">
     <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">What if I want to remove my listing?</div>
     <div style="font-size: 13px; color: #64748b; line-height: 1.65;">Email <a href="mailto:info@csvn.in" style="color: #4f46e5; font-weight: 700; text-decoration: none;">info@csvn.in</a> and we'll remove it within 4 business days. No questions asked.</div>
   </div>
 
   <div style="padding: 18px 22px; background: #fafbff;">
     <div style="font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">How do I pay?</div>
-    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">We accept UPI for all plans. Bank transfer (NEFT/IMPS) is available on request for Featured Pro and VIP Leader. You can pay directly through our <a href="/payment/" style="color: #4f46e5; font-weight: 700; text-decoration: none;">payment page</a>.</div>
+    <div style="font-size: 13px; color: #64748b; line-height: 1.65;">We accept UPI for all plans. Bank transfer (NEFT/IMPS) is available on request for Founding Featured and Founding VIP. You can pay directly through our <a href="/payment/" style="color: #4f46e5; font-weight: 700; text-decoration: none;">payment page</a>.</div>
   </div>
 
 </div>
 
 <!-- ============ CTA ============ -->
 <div style="background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%); border-radius: 16px; padding: 32px 28px; text-align: center; color: #ffffff; margin-bottom: 40px; box-shadow: 0 20px 40px -12px rgba(79,70,229,0.4);">
-  <div style="font-size: 20px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px;">Ready to Get Listed?</div>
-  <div style="font-size: 14px; opacity: 0.9; margin-bottom: 22px; max-width: 480px; margin-left: auto; margin-right: auto;">Send us your business details and your listing can be live within 4 business days of payment verification.</div>
+  <div style="font-size: 20px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px;">Claim Your Founding Slot</div>
+  <div style="font-size: 14px; opacity: 0.9; margin-bottom: 22px; max-width: 480px; margin-left: auto; margin-right: auto;">70 slots total. When a tier sells out, that price is permanently closed. Send us your business details and your listing can be live within 4 business days of payment verification.</div>
   <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
     <a href="/payment/" style="display: inline-block; background: #ffffff; color: #4f46e5; font-weight: 800; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-size: 14px;">Start Listing →</a>
-    <a href="mailto:info@csvn.in?subject=CSVN%20Listing%20Enquiry" style="display: inline-block; background: rgba(255,255,255,0.15); color: #ffffff; font-weight: 700; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.3);">Email Us</a>
+    <a href="mailto:info@csvn.in?subject=CSVN%20Founding%20Listing%20Enquiry" style="display: inline-block; background: rgba(255,255,255,0.15); color: #ffffff; font-weight: 700; padding: 12px 24px; border-radius: 10px; text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.3);">Email Us</a>
   </div>
   <div style="font-size: 12px; opacity: 0.75; margin-top: 18px;">Or call +91 87939 32827 · Mon–Sat, 10 AM – 6 PM IST</div>
 </div>
