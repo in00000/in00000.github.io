@@ -24,6 +24,11 @@ from pathlib import Path
 
 PER_CATEGORY = 10
 
+# Categories that already have real vendors — skip sample generation for these
+SKIP_CATEGORIES = {
+    "chartered-accountants",
+}
+
 random.seed(20260101)
 
 root = Path(__file__).resolve().parent.parent
@@ -121,14 +126,28 @@ def main():
         cats_data = json.load(f)
 
     total = 0
+    skipped = 0
+
     for cat in cats_data["categories"]:
+        slug = cat["slug"]
+
+        # Skip categories that have real vendors
+        if slug in SKIP_CATEGORIES:
+            old_dummy = out_dir / f"DUMMY-{slug}.json"
+            if old_dummy.exists():
+                old_dummy.unlink()
+                print(f"Skipped + removed sample data for {slug}")
+            skipped += 1
+            continue
+
         clients = [gen_client(cat, i) for i in range(PER_CATEGORY)]
-        out_file = out_dir / f"DUMMY-{cat['slug']}.json"
+        out_file = out_dir / f"DUMMY-{slug}.json"
         with open(out_file, "w", encoding="utf-8") as f:
             json.dump(clients, f, indent=2, ensure_ascii=False)
         total += len(clients)
 
-    print(f"Generated {total} SAMPLE clients across {len(cats_data['categories'])} categories")
+    print(f"Generated {total} SAMPLE clients across {len(cats_data['categories']) - skipped} categories")
+    print(f"Skipped {skipped} categories with real vendors")
 
     old = out_dir / "clients-01.json"
     if old.exists():
