@@ -1,0 +1,145 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — Category Page
+     File: layouts/categories/term.html
+     URL:  /categories/<slug>/
+     Shows all vendors in a given category
+     ═══════════════════════════════════════════════════════════ -->
+
+{{ define "main" }}
+
+{{ $slug := .Params.slug | default (.Title | urlize) }}
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO / HEADER
+     ═══════════════════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-gradient-to-br from-[#1e1b4b] via-indigo-700 to-[#4f46e5] text-white">
+  <div class="absolute inset-0 opacity-30 pointer-events-none"
+       style="background-image:radial-gradient(rgba(129,140,248,.25) 1px,transparent 1px);background-size:30px 30px;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+
+    <!-- Breadcrumb -->
+    <nav class="text-xs text-indigo-200 mb-5 flex items-center gap-2 flex-wrap">
+      <a href="/" class="hover:text-white transition-colors">Home</a>
+      <span class="text-indigo-300/50">›</span>
+      <a href="/categories/" class="hover:text-white transition-colors">Categories</a>
+      <span class="text-indigo-300/50">›</span>
+      <span class="text-white font-semibold">{{ .Title }}</span>
+    </nav>
+
+    <!-- Eyebrow -->
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 text-[11px] font-bold uppercase tracking-wider mb-4">
+      <i class="fa-solid fa-tag text-[10px]"></i>
+      Category
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
+      {{ .Title }}
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-indigo-100/85 max-w-2xl text-sm sm:text-base leading-relaxed">
+      Browse corporate service providers in <strong class="text-white">{{ .Title }}</strong> across India. Direct contact — no middlemen, no lead brokers.
+    </p>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VENDOR LIST
+     ═══════════════════════════════════════════════════════════ -->
+<section class="bg-slate-50 py-10 sm:py-14">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    {{/* ─── Find all vendors in this category ────────────── */}}
+    {{ $matched := slice }}
+    {{ range $file, $entries := .Site.Data.clients }}
+      {{ range $entries }}
+        {{ if eq .category $slug }}
+          {{ $matched = $matched | append . }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ if gt (len $matched) 0 }}
+
+      <!-- ─── RESULTS COUNT ──────────────────────────────── -->
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <p class="text-sm font-semibold text-slate-600">
+          <span class="text-indigo-600 font-black text-lg">{{ len $matched }}</span>
+          vendor{{ if ne (len $matched) 1 }}s{{ end }} found in {{ .Title }}
+        </p>
+        <a href="/vendors/"
+           class="text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors">
+          Browse all vendors →
+        </a>
+      </div>
+
+      <!-- ─── GRID OF VENDOR CARDS ───────────────────────── -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {{ range $matched }}
+          {{ partial "vendor-card.html" (dict "v" . "ctx" $) }}
+        {{ end }}
+      </div>
+
+    {{ else }}
+
+      <!-- ─── EMPTY STATE ─────────────────────────────────── -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-10 sm:p-16 text-center max-w-2xl mx-auto">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-indigo-50 flex items-center justify-center mb-5">
+          <i class="fa-solid fa-tag text-indigo-500 text-2xl"></i>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3">
+          No vendors in this category yet.
+        </h2>
+        <p class="text-slate-500 mb-7 text-sm sm:text-base leading-relaxed">
+          Be the first to list your business in <strong class="text-slate-700">{{ .Title }}</strong> on CSVN.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="https://www.csvn.in/list-your-business/"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-xl transition-all">
+            <i class="fa-solid fa-plus text-xs"></i>
+            Get Listed
+          </a>
+          <a href="/categories/"
+             class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-xl transition-all">
+            <i class="fa-solid fa-arrow-left text-xs"></i>
+            All Categories
+          </a>
+        </div>
+      </div>
+
+    {{ end }}
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BOTTOM CTA
+     ═══════════════════════════════════════════════════════════ -->
+<section class="bg-white border-t border-slate-200 py-12 sm:py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+
+    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-3">
+      Are you a <span class="bg-gradient-to-r from-indigo-600 to-emerald-600 bg-clip-text text-transparent">{{ .Title }}</span> provider?
+    </h2>
+    <p class="text-slate-600 text-sm sm:text-base mb-7 max-w-xl mx-auto leading-relaxed">
+      Join the Founding Round — 70 slots only, starting at ₹3,999. Get discovered by India's decision-makers.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="https://www.csvn.in/list-your-business/"
+         class="px-7 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl transition-all">
+        <i class="fa-solid fa-plus mr-2"></i>Get Listed Now
+      </a>
+      <a href="https://wa.me/918793932827" target="_blank" rel="noopener"
+         class="px-7 py-3.5 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold text-sm rounded-xl transition-all">
+        <i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp Us
+      </a>
+    </div>
+
+  </div>
+</section>
+
+{{ end }}
