@@ -1,7 +1,5 @@
 # ─────────────────────────────────────────────────────────────
 #  CSVN — Corporate Services Vendor Network
-#  Site:    B2B Service Provider Directory
-#  Scale:   50,000+ listing pages, text-only
 # ─────────────────────────────────────────────────────────────
 
 baseURL      = "https://www.csvn.in/"
@@ -9,38 +7,29 @@ languageCode = "en-us"
 title        = "CSVN India — Corporate Services Vendor Network | B2B Vendor Directory"
 timeZone     = "Asia/Kolkata"
 
-# We don't need RSS feeds on a directory site.
 disableKinds = ["RSS", "term"]
 
-# ─── Taxonomies ──────────────────────────────────────────────
-# Every client has a "category" field. Hugo auto-generates a real
-# page per category at /categories/<slug>/ using this taxonomy.
 [taxonomies]
   category = "categories"
 
-# ─── Pagination ──────────────────────────────────────────────
-# Used on category pages, the all-listings page, and search results.
 [pagination]
   pagerSize = 24
 
-# ─── Sitemap ─────────────────────────────────────────────────
-# Hugo auto-splits sitemaps when a site exceeds 50,000 URLs,
-# so all your listing pages get indexed cleanly.
 [sitemap]
   changefreq = "weekly"
   priority   = 0.5
   filename   = "sitemap.xml"
 
-# ─── Site-wide parameters ────────────────────────────────────
 [params]
   description  = "CSVN — a B2B service provider directory helping corporate service vendors build visibility and reach decision-makers across India."
   reportEmail  = "info@csvn.in"
+  phone        = "+91 87939 32827"
+  whatsapp     = "918793932827"
+  youtubeChannel = "https://www.youtube.com/@CSVNIndia"
 
-  # Homepage hero — focused on visibility and reach, not guarantees
   heroTitle    = "Get Discovered by India's Decision-Makers"
   heroSubtitle = "CSVN is a B2B visibility platform that helps corporate service providers reach Purchase Heads, Procurement Heads, HR Heads, Admin Heads, and other decision-makers across India."
 
-  # Industrial hubs shown in the hero search dropdown
   hubs = [
     "Pune & Chakan",
     "Mumbai & Thane",
@@ -49,20 +38,34 @@ disableKinds = ["RSS", "term"]
     "NCR / Gurgaon"
   ]
 
-# ─── Markup ──────────────────────────────────────────────────
+  # ─── Homepage videos ─────────────────────────────────────
+  videosHeading    = "See CSVN in Action"
+  videosSubheading = "Four short films on how corporate vendors across India are getting discovered."
+
+  [[params.videos]]
+    id    = "zulp4R2T8P0"
+    title = "Why Great B2B Vendors Stay Invisible in India"
+    tag   = "Problem → Solution"
+  [[params.videos]]
+    id    = "mWfHyMC3zx4"
+    title = "10 Reasons Vendors Are Joining CSVN"
+    tag   = "Why Choose CSVN"
+  [[params.videos]]
+    id    = "lihHqNDvyIk"
+    title = "Every Question About CSVN — Answered Honestly"
+    tag   = "Real Questions"
+  [[params.videos]]
+    id    = "nZKf0asgBEU"
+    title = "From Invisible to Found — One Vendor's Year"
+    tag   = "Vendor Journey"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      # Allow raw HTML inside client descriptions if ever needed.
       unsafe = true
 
-# ─── Build ───────────────────────────────────────────────────
 [build]
-  # Prints slow templates during local dev — useful when tuning
-  # 50k-page builds.
   writeStats = true
 
-# ─── Outputs ─────────────────────────────────────────────────
-# Generate HTML for every page + a sitemap for the home page.
 [outputs]
   home = ["HTML", "Sitemap"]
