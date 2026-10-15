@@ -1,0 +1,146 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — All Vendors Page
+     File: layouts/vendors/list.html
+     URL:  /vendors/
+     Shows every vendor in the CSVN directory
+     ═══════════════════════════════════════════════════════════ -->
+
+{{ define "main" }}
+
+{{/* ─── Collect ALL vendors into a flat list ──────────────── */}}
+{{ $all := slice }}
+{{ range $file, $entries := .Site.Data.clients }}
+  {{ range $entries }}
+    {{ $all = $all | append . }}
+  {{ end }}
+{{ end }}
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-gradient-to-br from-[#1e1b4b] via-indigo-700 to-[#4f46e5] text-white">
+  <div class="absolute inset-0 opacity-30 pointer-events-none"
+       style="background-image:radial-gradient(rgba(129,140,248,.25) 1px,transparent 1px);background-size:30px 30px;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+
+    <!-- Breadcrumb -->
+    <nav class="text-xs text-indigo-200 mb-5 flex items-center gap-2 flex-wrap">
+      <a href="/" class="hover:text-white transition-colors">Home</a>
+      <span class="text-indigo-300/50">›</span>
+      <span class="text-white font-semibold">All Vendors</span>
+    </nav>
+
+    <!-- Eyebrow -->
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 text-[11px] font-bold uppercase tracking-wider mb-4">
+      <i class="fa-solid fa-store text-[10px]"></i>
+      {{ len $all }} Vendors Listed
+    </div>
+
+    <!-- Title -->
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
+      All Vendors
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-indigo-100/85 max-w-2xl text-sm sm:text-base leading-relaxed">
+      Every corporate service provider on CSVN — across all categories and cities in India. Direct contact, no middlemen.
+    </p>
+
+    <!-- Quick filter links -->
+    <div class="flex flex-wrap gap-2 mt-6">
+      <a href="/categories/"
+         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition-all">
+        <i class="fa-solid fa-table-cells-large text-[10px]"></i>
+        Browse by Category
+      </a>
+      <a href="#vendors-grid"
+         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold transition-all">
+        <i class="fa-solid fa-arrow-down text-[10px]"></i>
+        Jump to Listings
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VENDOR GRID
+     ═══════════════════════════════════════════════════════════ -->
+<section id="vendors-grid" class="bg-slate-50 py-10 sm:py-14">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    {{ if gt (len $all) 0 }}
+
+      <!-- Result count -->
+      <div class="flex items-center justify-between mb-6 flex-wrap gap-3">
+        <p class="text-sm font-semibold text-slate-600">
+          Showing <span class="text-indigo-600 font-black">{{ len $all }}</span>
+          vendor{{ if ne (len $all) 1 }}s{{ end }}
+        </p>
+        <a href="/categories/"
+           class="text-xs font-bold text-slate-500 hover:text-indigo-600 transition-colors">
+          Filter by category →
+        </a>
+      </div>
+
+      <!-- Grid of vendor cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {{ range $all }}
+          {{ partial "vendor-card.html" (dict "v" . "ctx" $) }}
+        {{ end }}
+      </div>
+
+    {{ else }}
+
+      <!-- Empty state -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-10 sm:p-16 text-center max-w-2xl mx-auto">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-indigo-50 flex items-center justify-center mb-5">
+          <i class="fa-solid fa-store text-indigo-500 text-2xl"></i>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-3">
+          No vendors yet.
+        </h2>
+        <p class="text-slate-500 mb-7 text-sm sm:text-base leading-relaxed">
+          Be the first corporate service provider listed on CSVN.
+        </p>
+        <a href="https://www.csvn.in/list-your-business/"
+           class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-xl transition-all">
+          <i class="fa-solid fa-plus text-xs"></i>
+          Get Listed
+        </a>
+      </div>
+
+    {{ end }}
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     BOTTOM CTA
+     ═══════════════════════════════════════════════════════════ -->
+<section class="bg-white border-t border-slate-200 py-12 sm:py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+
+    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-3">
+      Want your business on this list?
+    </h2>
+    <p class="text-slate-600 text-sm sm:text-base mb-7 max-w-xl mx-auto leading-relaxed">
+      Founding Round — 70 slots only, starting at ₹3,999. Get discovered by India's decision-makers.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="https://www.csvn.in/list-your-business/"
+         class="px-7 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl transition-all">
+        <i class="fa-solid fa-plus mr-2"></i>Get Listed Now
+      </a>
+      <a href="https://wa.me/918793932827" target="_blank" rel="noopener"
+         class="px-7 py-3.5 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold text-sm rounded-xl transition-all">
+        <i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp Us
+      </a>
+    </div>
+
+  </div>
+</section>
+
+{{ end }}
