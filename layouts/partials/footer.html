@@ -1,65 +1,146 @@
-<footer class="bg-slate-900 text-slate-400 mt-20 border-t border-slate-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — Site Footer
+     File: layouts/partials/footer.html
+     ═══════════════════════════════════════════════════════════ -->
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+<footer class="bg-slate-950 text-slate-400 mt-16">
 
-      {{/* ── Brand Column ─────────────────────────────────── */}}
-      <div class="lg:col-span-2">
-        <div class="mb-5">
-          <img src="/logo.png" alt="CSVN — Corporate Services Vendor Network" class="h-12 w-auto brightness-0 invert opacity-90">
+  <!-- ─── MAIN FOOTER GRID ─────────────────────────────────── -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <!-- ─── COLUMN 1: Brand ──────────────────────────────── -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="{{ "logo.png" | relURL }}" alt="CSVN" class="h-10 w-auto bg-white rounded-lg p-1.5">
         </div>
-        <p class="text-xs leading-relaxed mb-5 max-w-sm">
-          CSVN — India's B2B service provider directory. Discover corporate service providers across 90+ categories.
+        <p class="text-sm font-semibold text-white mb-2">
+          CSVN — Corporate Services Vendor Network
         </p>
-        <p class="text-xs leading-relaxed text-slate-500 max-w-sm">
-          Independently operated by Sachin Ambekar, Pune, Maharashtra.
+        <p class="text-sm leading-relaxed mb-4">
+          A B2B visibility platform helping corporate service vendors reach decision-makers across India.
         </p>
+        <div class="flex items-center gap-2">
+          <a href="https://wa.me/918793932827" target="_blank" rel="noopener"
+             class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-[#25D366] flex items-center justify-center text-white transition-all"
+             aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="mailto:info@csvn.in"
+             class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-indigo-600 flex items-center justify-center text-white transition-all"
+             aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <a href="tel:+918793932827"
+             class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-indigo-600 flex items-center justify-center text-white transition-all"
+             aria-label="Phone">
+            <i class="fa-solid fa-phone"></i>
+          </a>
+        </div>
       </div>
 
-      {{/* ── Explore Column ───────────────────────────────── */}}
+      <!-- ─── COLUMN 2: Explore ─────────────────────────────── -->
       <div>
-        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Explore</h4>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="/listings/" class="hover:text-white transition-colors">Directory</a></li>
-          <li><a href="/categories/" class="hover:text-white transition-colors">Categories</a></li>
-          <li><a href="/search/" class="hover:text-white transition-colors">Search</a></li>
+        <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">
+          Explore
+        </h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/" class="hover:text-emerald-400 transition-colors">Home</a></li>
+          <li><a href="/categories/" class="hover:text-emerald-400 transition-colors">All Categories</a></li>
+          <li><a href="/vendors/" class="hover:text-emerald-400 transition-colors">All Vendors</a></li>
+          <li><a href="/pricing/" class="hover:text-emerald-400 transition-colors">Founding Round Pricing</a></li>
+          <li><a href="/about/" class="hover:text-emerald-400 transition-colors">About CSVN</a></li>
         </ul>
       </div>
 
-      {{/* ── Company Column ───────────────────────────────── */}}
+      <!-- ─── COLUMN 3: For Vendors ─────────────────────────── -->
       <div>
-        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Company</h4>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="/about/" class="hover:text-white transition-colors">About Us</a></li>
-          <li><a href="/contact/" class="hover:text-white transition-colors">Contact</a></li>
-          <li><a href="/pricing/" class="hover:text-white transition-colors">Pricing</a></li>
-          <li><a href="/list-your-business/" class="hover:text-white transition-colors">List Your Business</a></li>
-          <li><a href="/payment/" class="hover:text-white transition-colors">Payment</a></li>
+        <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">
+          For Vendors
+        </h4>
+        <ul class="space-y-2.5 text-sm">
+          <li>
+            <a href="https://www.csvn.in/list-your-business/"
+               class="hover:text-emerald-400 transition-colors">
+              Get Listed
+            </a>
+          </li>
+          <li>
+            <a href="https://www.csvn.in/payment/"
+               class="hover:text-emerald-400 transition-colors">
+              Pay & Activate
+            </a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/@CSVNIndia"
+               target="_blank" rel="noopener"
+               class="hover:text-emerald-400 transition-colors">
+              Watch Videos
+            </a>
+          </li>
+          <li>
+            <a href="/contact/" class="hover:text-emerald-400 transition-colors">
+              Talk to Us
+            </a>
+          </li>
         </ul>
       </div>
 
-      {{/* ── Legal Column ─────────────────────────────────── */}}
+      <!-- ─── COLUMN 4: Contact ─────────────────────────────── -->
       <div>
-        <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Legal</h4>
-        <ul class="space-y-2.5 text-xs">
-          <li><a href="/terms/" class="hover:text-white transition-colors">Terms of Service</a></li>
-          <li><a href="/privacy/" class="hover:text-white transition-colors">Privacy Policy</a></li>
-          <li><a href="/refund/" class="hover:text-white transition-colors">Refund Policy</a></li>
-          <li><a href="/disclaimer/" class="hover:text-white transition-colors">Disclaimer</a></li>
-          <li><a href="/grievance-officer/" class="hover:text-white transition-colors">Grievance Officer</a></li>
+        <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-4">
+          Contact
+        </h4>
+        <ul class="space-y-3 text-sm">
+
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-phone text-emerald-400 mt-1 w-4"></i>
+            <a href="tel:+918793932827" class="hover:text-emerald-400 transition-colors">
+              +91 87939 32827
+            </a>
+          </li>
+
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-envelope text-emerald-400 mt-1 w-4"></i>
+            <a href="mailto:info@csvn.in" class="hover:text-emerald-400 transition-colors">
+              info@csvn.in
+            </a>
+          </li>
+
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-location-dot text-emerald-400 mt-1 w-4"></i>
+            <span class="leading-relaxed">
+              Nigdi, Pimpri-Chinchwad,<br>
+              Pune, Maharashtra, India
+            </span>
+          </li>
+
+          <li class="flex items-start gap-3">
+            <i class="fa-solid fa-clock text-emerald-400 mt-1 w-4"></i>
+            <span>Mon–Sat, 10 AM – 6 PM IST</span>
+          </li>
+
         </ul>
       </div>
 
     </div>
-
-    {{/* ── Bottom Bar ──────────────────────────────────────── */}}
-    <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-      <p>© {{ now.Year }} <span class="font-semibold text-slate-400">CSVN</span> — Corporate Services Vendor Network. All rights reserved.</p>
-      <div class="flex gap-6">
-        <a href="/contact/" class="hover:text-slate-300 transition-colors">Contact</a>
-        <a href="/grievance-officer/" class="hover:text-slate-300 transition-colors">Grievance</a>
-      </div>
-    </div>
-
   </div>
+
+  <!-- ─── BOTTOM BAR ───────────────────────────────────────── -->
+  <div class="border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+
+      <p class="text-slate-500 text-center sm:text-left">
+        © {{ now.Year }} CSVN — Corporate Services Vendor Network. All rights reserved.
+      </p>
+
+      <div class="flex items-center gap-5">
+        <a href="/terms/" class="hover:text-emerald-400 transition-colors">Terms</a>
+        <a href="/privacy/" class="hover:text-emerald-400 transition-colors">Privacy</a>
+        <a href="/contact/" class="hover:text-emerald-400 transition-colors">Contact</a>
+      </div>
+
+    </div>
+  </div>
+
 </footer>
