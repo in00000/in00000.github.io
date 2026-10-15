@@ -1,105 +1,105 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — Site Head
+     File: layouts/partials/head.html
+     ═══════════════════════════════════════════════════════════ -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
 
-{{ if .IsHome }}
-  <title>{{ .Site.Title }}</title>
-{{ else }}
-  <title>{{ .Title }} · {{ .Site.Title }}</title>
+<!-- ─── TITLE ─────────────────────────────────────────────── -->
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | CSVN{{ end }}</title>
+
+<!-- ─── META DESCRIPTION ──────────────────────────────────── -->
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Params.tagline }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+
+{{ if .Params.category }}
+<meta name="keywords" content="{{ .Params.category }}, {{ .Params.city }}, corporate services, B2B vendor, India">
 {{ end }}
 
-{{ $desc := "" }}
-{{ if .Description }}
-  {{ $desc = .Description }}
-{{ else if .IsHome }}
-  {{ $desc = .Site.Params.description }}
-{{ else if .Params.description }}
-  {{ $desc = .Params.description }}
-{{ else }}
-  {{ $desc = .Site.Params.description }}
-{{ end }}
-<meta name="description" content="{{ $desc }}">
-
+<!-- ─── CANONICAL ─────────────────────────────────────────── -->
 <link rel="canonical" href="{{ .Permalink }}">
 
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta property="og:description" content="{{ $desc }}">
+<!-- ─── OPEN GRAPH (Facebook / WhatsApp) ──────────────────── -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:image" content="{{ .Site.BaseURL }}logo.png">
+<meta property="og:site_name" content="CSVN">
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta name="twitter:description" content="{{ $desc }}">
+<!-- ─── TWITTER CARD ──────────────────────────────────────── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta name="twitter:image" content="{{ .Site.BaseURL }}logo.png">
 
-{{ if or .Params.noindex (eq .Kind "404") }}
-<meta name="robots" content="noindex, nofollow">
-{{ else }}
-<meta name="robots" content="index, follow">
-{{ end }}
+<!-- ─── FAVICON ───────────────────────────────────────────── -->
+<link rel="icon" type="image/png" href="{{ "logo.png" | relURL }}">
+
+<!-- ─── FONTS ─────────────────────────────────────────────── -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+<!-- ─── ICONS (Font Awesome) ──────────────────────────────── -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- ─── TAILWIND CSS ──────────────────────────────────────── -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
-        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
-      }
-    }
+        fontFamily: {
+          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        },
+        colors: {
+          indigo: {
+            50:  '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+            400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+            800: '#3730a3', 900: '#312e81',
+          },
+          emerald: {
+            50:  '#ecfdf5', 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857',
+          },
+        },
+      },
+    },
   };
 </script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-{{ if .Store.Get "needsAlpine" }}
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-{{ end }}
-
+<!-- ─── GLOBAL PAGE STYLES ────────────────────────────────── -->
 <style>
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', system-ui, sans-serif; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+  ::selection { background: #4f46e5; color: #fff; }
+
+  /* Hide scrollbars on horizontal tab strips */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 </style>
-{{ partial "schema.html" . }}
 
-{{/* ─── Client-side shuffle ──────────────────────────────────
-     Shuffles any element with data-shuffle="true" on page load.
-     Used on category pages + homepage to rotate vendor cards
-     within their tier block on every page load.
-     ────────────────────────────────────────────────────────── */}}
-<script>
-(function () {
-  'use strict';
-
-  function shuffle(el) {
-    if (!el) return;
-    var kids = Array.prototype.slice.call(el.children);
-    if (kids.length < 2) return;
-    for (var i = kids.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var t = kids[i]; kids[i] = kids[j]; kids[j] = t;
-    }
-    var frag = document.createDocumentFragment();
-    for (var k = 0; k < kids.length; k++) {
-      frag.appendChild(kids[k]);
-    }
-    el.appendChild(frag);
-  }
-
-  function run() {
-    var targets = document.querySelectorAll('[data-shuffle="true"]');
-    for (var i = 0; i < targets.length; i++) {
-      shuffle(targets[i]);
-    }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', run);
-  } else {
-    run();
-  }
-})();
+<!-- ─── VIDEO SCHEMA (only on homepage) ───────────────────── -->
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CSVN — Corporate Services Vendor Network",
+  "url": "{{ .Site.BaseURL }}",
+  "logo": "{{ .Site.BaseURL }}logo.png",
+  "email": "info@csvn.in",
+  "telephone": "+91 87939 32827",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://www.youtube.com/@CSVNIndia"
+  ]
+}
 </script>
-
+{{ end }}
