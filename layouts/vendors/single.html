@@ -1,0 +1,328 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — Vendor Profile Page
+     File: layouts/vendors/single.html
+     URL:  /vendors/<id>/
+     ═══════════════════════════════════════════════════════════ -->
+
+{{ define "main" }}
+
+{{ $v := .Params }}
+
+<article class="bg-slate-50 min-h-screen">
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+    <!-- ─── BREADCRUMB ──────────────────────────────────────── -->
+    <nav class="text-xs text-slate-500 mb-6 flex items-center gap-2 flex-wrap">
+      <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
+      <span class="text-slate-300">›</span>
+      <a href="/categories/{{ $v.category }}/" class="hover:text-indigo-600 transition-colors">
+        {{ $v.category | humanize | title }}
+      </a>
+      <span class="text-slate-300">›</span>
+      <span class="text-slate-700 font-semibold">{{ $v.name }}</span>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════
+         VENDOR HEADER
+         ═══════════════════════════════════════════════════════ -->
+    <header class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 mb-6">
+
+      <div class="flex flex-col lg:flex-row lg:items-start gap-8">
+
+        <!-- ─── LEFT: Identity ──────────────────────────────── -->
+        <div class="flex-1 min-w-0">
+
+          <!-- Tier badge -->
+          {{ $tier := lower ($v.tier | default "standard") }}
+          {{ if eq $tier "vip" }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-[11px] font-black uppercase tracking-wider mb-4">
+              <i class="fa-solid fa-crown"></i> {{ $v.tier }}
+            </span>
+          {{ else if eq $tier "featured" }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-[11px] font-black uppercase tracking-wider mb-4">
+              <i class="fa-solid fa-star"></i> {{ $v.tier }}
+            </span>
+          {{ else }}
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-[11px] font-black uppercase tracking-wider mb-4">
+              {{ $v.tier | default "Standard" }}
+            </span>
+          {{ end }}
+
+          <!-- Name -->
+          <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-tight mb-3">
+            {{ $v.name }}
+          </h1>
+
+          <!-- Tagline -->
+          {{ with $v.tagline }}
+            <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mb-5">
+              {{ . }}
+            </p>
+          {{ end }}
+
+          <!-- Meta strip -->
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-600">
+
+            {{ with $v.city }}
+              <span class="flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-indigo-500"></i>
+                <span>{{ . }}{{ with $v.area }}, {{ . }}{{ end }}</span>
+              </span>
+            {{ end }}
+
+            {{ with $v.experience }}
+              <span class="flex items-center gap-2">
+                <i class="fa-solid fa-briefcase text-indigo-500"></i>
+                <span>{{ . }} experience</span>
+              </span>
+            {{ end }}
+
+            {{ with $v.since }}
+              <span class="flex items-center gap-2">
+                <i class="fa-solid fa-calendar text-indigo-500"></i>
+                <span>Since {{ . }}</span>
+              </span>
+            {{ end }}
+
+          </div>
+
+        </div>
+
+        <!-- ─── RIGHT: Contact buttons ──────────────────────── -->
+        <div class="w-full lg:w-64 shrink-0 grid grid-cols-2 lg:grid-cols-1 gap-2">
+
+          {{ with $v.phone }}
+            <a href="tel:{{ . }}"
+               class="flex items-center justify-center gap-2 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-xl transition-all">
+              <i class="fa-solid fa-phone"></i> Call Now
+            </a>
+          {{ end }}
+
+          {{ with $v.whatsapp }}
+            <a href="https://wa.me/{{ replaceRE "[^0-9]" "" . }}"
+               target="_blank" rel="noopener"
+               class="flex items-center justify-center gap-2 px-4 py-3 bg-[#25D366] hover:bg-[#1DA851] text-white text-sm font-bold rounded-xl transition-all">
+              <i class="fa-brands fa-whatsapp"></i> WhatsApp
+            </a>
+          {{ end }}
+
+          {{ with $v.email }}
+            <a href="mailto:{{ . }}"
+               class="flex items-center justify-center gap-2 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-xl transition-all">
+              <i class="fa-solid fa-envelope"></i> Email
+            </a>
+          {{ end }}
+
+          {{ with $v.website }}
+            <a href="{{ . }}" target="_blank" rel="noopener nofollow"
+               class="flex items-center justify-center gap-2 px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold rounded-xl transition-all">
+              <i class="fa-solid fa-globe"></i> Website
+            </a>
+          {{ end }}
+
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MAIN LAYOUT — content (left) + sidebar (right)
+         ═══════════════════════════════════════════════════════ -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- ─── LEFT COLUMN (2/3) ────────────────────────────── -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- ─── ABOUT ─────────────────────────────────────── -->
+        {{ with $v.about }}
+          {{ if gt (len .) 0 }}
+          <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+            <h2 class="text-xl font-black text-slate-900 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-circle-info text-indigo-500"></i>
+              About {{ $v.name }}
+            </h2>
+            <div class="space-y-3 text-slate-600 leading-relaxed text-sm sm:text-base">
+              {{ range . }}
+                <p>{{ . }}</p>
+              {{ end }}
+            </div>
+          </section>
+          {{ end }}
+        {{ end }}
+
+        <!-- ─── SERVICES ──────────────────────────────────── -->
+        {{ with $v.services }}
+          {{ if gt (len .) 0 }}
+          <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+            <h2 class="text-xl font-black text-slate-900 mb-5 flex items-center gap-2">
+              <i class="fa-solid fa-list-check text-emerald-500"></i>
+              Services Offered
+            </h2>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {{ range . }}
+              <li class="flex items-start gap-3 text-sm text-slate-700 bg-slate-50 rounded-lg px-4 py-3">
+                <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5"></i>
+                <span class="font-medium">{{ . }}</span>
+              </li>
+              {{ end }}
+            </ul>
+          </section>
+          {{ end }}
+        {{ end }}
+
+        <!-- ─── CLIENTS ────────────────────────────────────── -->
+        {{ with $v.clients }}
+          {{ if gt (len .) 0 }}
+          <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+            <h2 class="text-xl font-black text-slate-900 mb-5 flex items-center gap-2">
+              <i class="fa-solid fa-handshake text-indigo-500"></i>
+              Trusted By
+            </h2>
+            <div class="flex flex-wrap gap-2">
+              {{ range . }}
+              <span class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-sm font-medium">
+                {{ . }}
+              </span>
+              {{ end }}
+            </div>
+          </section>
+          {{ end }}
+        {{ end }}
+
+        <!-- ─── REVIEWS ────────────────────────────────────── -->
+        {{ with $v.reviews }}
+          {{ if gt (len .) 0 }}
+          <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8">
+            <h2 class="text-xl font-black text-slate-900 mb-5 flex items-center gap-2">
+              <i class="fa-solid fa-star text-amber-500"></i>
+              Reviews
+            </h2>
+            <div class="space-y-4">
+              {{ range . }}
+              <div class="border-b border-slate-100 last:border-0 pb-4 last:pb-0">
+                <div class="flex items-center justify-between mb-2">
+                  <strong class="text-slate-900 text-sm">{{ .name | default "Customer" }}</strong>
+                  <span class="text-amber-500 text-sm">
+                    {{ range seq (int (.rating | default 5)) }}★{{ end }}
+                  </span>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">{{ .text }}</p>
+              </div>
+              {{ end }}
+            </div>
+          </section>
+          {{ end }}
+        {{ end }}
+
+      </div>
+
+      <!-- ─── RIGHT COLUMN (1/3) — Sidebar ──────────────────── -->
+      <aside class="lg:col-span-1 space-y-6 lg:sticky lg:top-32 self-start">
+
+        <!-- Contact Info Card -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+          <h3 class="text-sm font-black text-slate-900 uppercase tracking-wider mb-5">
+            Contact Information
+          </h3>
+
+          <div class="space-y-1">
+
+            {{ with $v.address }}
+            <div class="flex gap-3 py-2.5 border-b border-slate-100">
+              <i class="fa-solid fa-location-dot text-indigo-500 mt-0.5 w-4"></i>
+              <span class="text-sm text-slate-600 leading-relaxed">{{ . }}</span>
+            </div>
+            {{ end }}
+
+            {{ with $v.phone }}
+            <div class="flex gap-3 py-2.5 border-b border-slate-100">
+              <i class="fa-solid fa-phone text-indigo-500 mt-0.5 w-4"></i>
+              <a href="tel:{{ . }}" class="text-sm text-slate-600 hover:text-indigo-600 transition-colors">{{ . }}</a>
+            </div>
+            {{ end }}
+
+            {{ with $v.whatsapp }}
+            <div class="flex gap-3 py-2.5 border-b border-slate-100">
+              <i class="fa-brands fa-whatsapp text-emerald-500 mt-0.5 w-4"></i>
+              <a href="https://wa.me/{{ replaceRE "[^0-9]" "" . }}" target="_blank" rel="noopener" class="text-sm text-slate-600 hover:text-indigo-600 transition-colors">{{ . }}</a>
+            </div>
+            {{ end }}
+
+            {{ with $v.email }}
+            <div class="flex gap-3 py-2.5 border-b border-slate-100">
+              <i class="fa-solid fa-envelope text-indigo-500 mt-0.5 w-4"></i>
+              <a href="mailto:{{ . }}" class="text-sm text-slate-600 hover:text-indigo-600 transition-colors break-all">{{ . }}</a>
+            </div>
+            {{ end }}
+
+            {{ with $v.website }}
+            <div class="flex gap-3 py-2.5 border-b border-slate-100">
+              <i class="fa-solid fa-globe text-indigo-500 mt-0.5 w-4"></i>
+              <a href="{{ . }}" target="_blank" rel="noopener nofollow" class="text-sm text-slate-600 hover:text-indigo-600 transition-colors break-all">{{ . }}</a>
+            </div>
+            {{ end }}
+
+            {{ with $v.hours }}
+            <div class="flex gap-3 py-2.5">
+              <i class="fa-solid fa-clock text-indigo-500 mt-0.5 w-4"></i>
+              <span class="text-sm text-slate-600">{{ . }}</span>
+            </div>
+            {{ end }}
+
+          </div>
+        </div>
+
+        <!-- Map Link Card -->
+        {{ with $v.mapUrl }}
+        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+          <h3 class="text-sm font-black text-slate-900 uppercase tracking-wider mb-3">
+            Location
+          </h3>
+          <a href="{{ . }}" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
+            <i class="fa-solid fa-map-location-dot"></i>
+            View on Google Maps
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+        {{ end }}
+
+        <!-- CSVN CTA Card -->
+        <div class="bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-800 rounded-2xl p-6 text-white">
+          <h3 class="text-base font-black mb-2">Get Listed on CSVN</h3>
+          <p class="text-sm text-indigo-100/80 leading-relaxed mb-4">
+            Founding Round — 70 slots only. Starting at ₹3,999.
+          </p>
+          <a href="https://www.csvn.in/list-your-business/"
+             class="block w-full text-center px-4 py-3 bg-white text-indigo-700 text-sm font-bold rounded-xl hover:bg-indigo-50 transition-all">
+            Start Now →
+          </a>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="bg-slate-100 border border-slate-200 rounded-2xl p-5 text-xs text-slate-500 leading-relaxed">
+          <strong class="text-slate-700 font-bold block mb-1.5">Note</strong>
+          CSVN is a visibility and promotion platform. Listing information is provided by the vendor.
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         BACK TO CATEGORY LINK
+         ═══════════════════════════════════════════════════════ -->
+    <div class="mt-10 text-center">
+      <a href="/categories/{{ $v.category }}/"
+         class="inline-flex items-center gap-2 text-sm font-bold text-slate-600 hover:text-indigo-600 transition-colors">
+        <i class="fa-solid fa-arrow-left text-xs"></i>
+        Back to {{ $v.category | humanize | title }}
+      </a>
+    </div>
+
+  </div>
+
+</article>
+
+{{ end }}
