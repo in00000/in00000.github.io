@@ -1,0 +1,129 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — Homepage Video Showcase
+     File: layouts/partials/video-section.html
+     Videos are pulled from [params.videos] in hugo.toml
+     ═══════════════════════════════════════════════════════════ -->
+
+{{ with .Site.Params.videos }}
+<section class="py-16 sm:py-24 bg-slate-950 text-white relative overflow-hidden" id="videos">
+
+  <!-- ─── Decorative dotted background ─────────────────────── -->
+  <div class="absolute inset-0 opacity-40 pointer-events-none"
+       style="background-image:radial-gradient(rgba(129,140,248,.18) 1px,transparent 1px);background-size:30px 30px;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+
+    <!-- ─── SECTION HEADER ──────────────────────────────────── -->
+    <div class="text-center mb-12">
+      <div class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-4">
+        Watch · Founding Round 2026
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-white mb-3">
+        {{ .Site.Params.videosHeading | default "See CSVN in Action" }}
+      </h2>
+      <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+        {{ .Site.Params.videosSubheading | default "Four short films on how corporate vendors across India are getting discovered." }}
+      </p>
+    </div>
+
+    <!-- ─── VIDEO GRID ──────────────────────────────────────── -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      {{ range $index, $video := . }}
+      <div class="group bg-white/[0.04] border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-emerald-400/40 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300">
+
+        <!-- Video thumbnail / frame -->
+        <div class="csvn-video-frame relative aspect-video bg-slate-950 overflow-hidden">
+
+          <button class="csvn-video-thumb absolute inset-0 w-full h-full border-0 p-0 m-0 bg-slate-950 cursor-pointer group/btn"
+                  type="button"
+                  aria-label="Play: {{ $video.title }}"
+                  data-video-id="{{ $video.id }}">
+
+            <img src="https://i.ytimg.com/vi/{{ $video.id }}/maxresdefault.jpg"
+                 alt="{{ $video.title }}"
+                 loading="lazy"
+                 class="absolute inset-0 w-full h-full object-cover brightness-[0.75] group-hover:brightness-[0.6] group-hover:scale-105 transition-all duration-500"
+                 onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/{{ $video.id }}/hqdefault.jpg';">
+
+            <!-- YouTube-style play button -->
+            <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-300 drop-shadow-2xl">
+              <svg viewBox="0 0 68 48" width="68" height="48" xmlns="http://www.w3.org/2000/svg">
+                <path d="M66.52 7.74a8.5 8.5 0 0 0-5.99-6.03C55.28 0 34 0 34 0S12.72 0 7.47 1.71a8.5 8.5 0 0 0-5.99 6.03C0 13.03 0 24 0 24s0 10.97 1.48 16.26a8.5 8.5 0 0 0 5.99 6.03C12.72 48 34 48 34 48s21.28 0 26.53-1.71a8.5 8.5 0 0 0 5.99-6.03C68 34.97 68 24 68 24s0-10.97-1.48-16.26z" fill="#ff0000"/>
+                <path d="M45 24 27 14v20" fill="#ffffff"/>
+              </svg>
+            </span>
+
+            <!-- Tag pill (top-left) -->
+            {{ with $video.tag }}
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-sm border border-emerald-400/40 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">
+              {{ . }}
+            </span>
+            {{ end }}
+
+          </button>
+        </div>
+
+        <!-- Video meta -->
+        <div class="p-4 flex items-start gap-3">
+          <span class="text-emerald-400 font-black text-xs tabular-nums leading-relaxed shrink-0">
+            {{ printf "%02d" (add $index 1) }}
+          </span>
+          <h3 class="text-sm font-bold text-white leading-snug tracking-tight">
+            {{ $video.title }}
+          </h3>
+        </div>
+
+      </div>
+      {{ end }}
+
+    </div>
+
+    <!-- ─── BOTTOM CTAs ─────────────────────────────────────── -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mt-12">
+      <a href="{{ .Site.Params.youtubeChannel | default "https://www.youtube.com/@CSVNIndia" }}"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2.5 px-6 py-3 bg-white text-slate-900 font-bold text-sm rounded-xl hover:bg-emerald-400 hover:text-slate-900 transition-all shadow-lg">
+        <i class="fa-brands fa-youtube text-red-600 text-base"></i>
+        Subscribe on YouTube
+      </a>
+      <a href="https://wa.me/918793932827" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2.5 px-6 py-3 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold text-sm rounded-xl transition-all shadow-lg">
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        WhatsApp Us
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CLICK-TO-PLAY SCRIPT
+     Replaces thumbnail with YouTube iframe only when clicked
+     ═══════════════════════════════════════════════════════════ -->
+<script>
+(function(){
+  'use strict';
+  var buttons = document.querySelectorAll('.csvn-video-thumb');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(){
+      var id = this.getAttribute('data-video-id');
+      if (!id) return;
+      var frame = this.parentElement;
+      var iframe = document.createElement('iframe');
+      iframe.setAttribute('src',
+        'https://www.youtube-nocookie.com/embed/' + id +
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1');
+      iframe.setAttribute('title', 'CSVN Video');
+      iframe.setAttribute('allow',
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.className = 'absolute inset-0 w-full h-full border-0';
+      frame.innerHTML = '';
+      frame.appendChild(iframe);
+    });
+  }
+})();
+</script>
+
+{{ end }}
