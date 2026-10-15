@@ -1,238 +1,117 @@
-{{ define "main" }}
-
 <!-- ═══════════════════════════════════════════════════════════
-     CSVN — Homepage
-     File: layouts/index.html
+     CSVN — Homepage Video Showcase
+     File: layouts/partials/video-section.html
+     Videos pulled from [params.videos] in hugo.toml
      ═══════════════════════════════════════════════════════════ -->
 
-<!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="relative overflow-hidden bg-gradient-to-br from-[#1e1b4b] via-indigo-600 to-[#7c3aed] text-white">
-  <div class="absolute inset-0 opacity-30" style="background-image:radial-gradient(rgba(129,140,248,.25) 1px,transparent 1px);background-size:30px 30px;"></div>
+{{ with .Site.Params.videos }}
+<section class="py-16 sm:py-24 bg-slate-950 text-white relative overflow-hidden" id="videos">
 
-  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
+  <div class="absolute inset-0 opacity-40 pointer-events-none"
+       style="background-image:radial-gradient(rgba(129,140,248,.18) 1px,transparent 1px);background-size:30px 30px;"></div>
 
-    <!-- Badge -->
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 text-xs font-bold uppercase tracking-wider mb-6">
-      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      Founding Round · 70 Slots Only
-    </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
 
-    <!-- Headline -->
-    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-5">
-      Get Discovered by<br>
-      India's <span class="bg-gradient-to-r from-indigo-200 to-emerald-300 bg-clip-text text-transparent">Decision-Makers</span>
-    </h1>
-
-    <!-- Subheadline -->
-    <p class="text-base sm:text-lg text-indigo-100/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-      CSVN is a B2B visibility platform helping corporate service providers reach Purchase Heads, Procurement Heads, HR Heads, Admin Heads, and decision-makers across India.
-    </p>
-
-    <!-- Search Bar -->
-    <form action="/vendors/" method="get" class="max-w-2xl mx-auto mb-10">
-      <div class="flex flex-col sm:flex-row gap-2 bg-white rounded-2xl p-2 shadow-2xl">
-        <input type="text" name="q"
-               placeholder="Search vendors, services, cities…"
-               class="flex-1 px-4 py-3 text-slate-800 text-sm rounded-xl outline-none focus:ring-2 focus:ring-indigo-500">
-        <select name="hub"
-                class="px-4 py-3 text-slate-700 text-sm rounded-xl bg-slate-50 outline-none focus:ring-2 focus:ring-indigo-500">
-          <option value="">All Hubs</option>
-          {{ range .Site.Params.hubs }}
-          <option>{{ . }}</option>
-          {{ end }}
-        </select>
-        <button type="submit"
-                class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-xl transition-all flex items-center justify-center gap-2">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          Search
-        </button>
+    <div class="text-center mb-12">
+      <div class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-4">
+        Watch · Founding Round 2026
       </div>
-    </form>
-
-    <!-- Stats Row -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
-      <div>
-        <div class="text-3xl sm:text-4xl font-black text-white">91</div>
-        <div class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-indigo-200/80 mt-1">Categories</div>
-      </div>
-      <div>
-        <div class="text-3xl sm:text-4xl font-black text-white">90+</div>
-        <div class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-indigo-200/80 mt-1">Cities</div>
-      </div>
-      <div>
-        <div class="text-3xl sm:text-4xl font-black text-white">0%</div>
-        <div class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-indigo-200/80 mt-1">Commission</div>
-      </div>
-      <div>
-        <div class="text-3xl sm:text-4xl font-black text-white">₹3,999</div>
-        <div class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-indigo-200/80 mt-1">Starting</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── VIDEO SECTION ────────────────────────────────────────── -->
-{{ partial "video-section.html" . }}
-
-<!-- ─── CATEGORIES ───────────────────────────────────────────── -->
-<section class="py-16 sm:py-20 bg-slate-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-    <div class="text-center mb-10">
-      <div class="inline-block text-[11px] font-bold uppercase tracking-widest text-indigo-600 mb-3">
-        Browse by Category
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 mb-3">
-        91 Categories. <span class="bg-gradient-to-r from-indigo-600 to-emerald-600 bg-clip-text text-transparent">One Network.</span>
+      <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-white mb-3">
+        {{ $.Site.Params.videosHeading | default "See CSVN in Action" }}
       </h2>
-      <p class="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
-        Facility · IT · Security · HR · Logistics · Finance · and 85 more corporate service groups.
+      <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+        {{ $.Site.Params.videosSubheading | default "Four short films on how corporate vendors across India are getting discovered." }}
       </p>
     </div>
 
-    {{ $seen := dict }}
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-      {{ range $file, $entries := .Site.Data.clients }}
-        {{ range $entries }}
-          {{ if not (index $seen .category) }}
-            {{ $seen = merge $seen (dict .category true) }}
-            <a href="/categories/{{ .category }}/"
-               class="group flex items-center gap-3 bg-white border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-700 hover:border-indigo-300 hover:text-indigo-600 hover:shadow-md transition-all">
-              <i class="fa-solid fa-tag text-indigo-500 text-sm group-hover:scale-110 transition-transform"></i>
-              <span class="truncate">{{ .category | humanize | title }}</span>
-            </a>
-          {{ end }}
-        {{ end }}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      {{ range $index, $video := . }}
+      <div class="group bg-white/[0.04] border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-emerald-400/40 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300">
+
+        <div class="csvn-video-frame relative aspect-video bg-slate-950 overflow-hidden">
+
+          <button class="csvn-video-thumb absolute inset-0 w-full h-full border-0 p-0 m-0 bg-slate-950 cursor-pointer"
+                  type="button"
+                  aria-label="Play: {{ $video.title }}"
+                  data-video-id="{{ $video.id }}">
+
+            <img src="https://i.ytimg.com/vi/{{ $video.id }}/maxresdefault.jpg"
+                 alt="{{ $video.title }}"
+                 loading="lazy"
+                 class="absolute inset-0 w-full h-full object-cover brightness-75 group-hover:brightness-[.6] group-hover:scale-105 transition-all duration-500"
+                 onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/{{ $video.id }}/hqdefault.jpg';">
+
+            <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-300 drop-shadow-2xl">
+              <svg viewBox="0 0 68 48" width="68" height="48" xmlns="http://www.w3.org/2000/svg">
+                <path d="M66.52 7.74a8.5 8.5 0 0 0-5.99-6.03C55.28 0 34 0 34 0S12.72 0 7.47 1.71a8.5 8.5 0 0 0-5.99 6.03C0 13.03 0 24 0 24s0 10.97 1.48 16.26a8.5 8.5 0 0 0 5.99 6.03C12.72 48 34 48 34 48s21.28 0 26.53-1.71a8.5 8.5 0 0 0 5.99-6.03C68 34.97 68 24 68 24s0-10.97-1.48-16.26z" fill="#ff0000"/>
+                <path d="M45 24 27 14v20" fill="#ffffff"/>
+              </svg>
+            </span>
+
+            {{ with $video.tag }}
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-sm border border-emerald-400/40 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">
+              {{ . }}
+            </span>
+            {{ end }}
+
+          </button>
+        </div>
+
+        <div class="p-4 flex items-start gap-3">
+          <span class="text-emerald-400 font-black text-xs tabular-nums leading-relaxed shrink-0">
+            {{ printf "%02d" (add $index 1) }}
+          </span>
+          <h3 class="text-sm font-bold text-white leading-snug tracking-tight">
+            {{ $video.title }}
+          </h3>
+        </div>
+
+      </div>
       {{ end }}
-    </div>
-
-    <div class="text-center mt-10">
-      <a href="/categories/"
-         class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold rounded-xl transition-all">
-        View All Categories
-        <i class="fa-solid fa-arrow-right text-xs"></i>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── RECENT VENDORS ──────────────────────────────────────── -->
-<section class="py-16 sm:py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-    <div class="text-center mb-10">
-      <div class="inline-block text-[11px] font-bold uppercase tracking-widest text-emerald-600 mb-3">
-        Recently Listed
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 mb-3">
-        Vendors on CSVN
-      </h2>
-      <p class="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
-        Corporate service providers across India — from facility management to IT services.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      {{ $count := 0 }}
-      {{ range $file, $entries := .Site.Data.clients }}
-        {{ range $entries }}
-          {{ if lt $count 8 }}
-            {{ partial "vendor-card.html" (dict "v" . "ctx" $) }}
-            {{ $count = add $count 1 }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-    </div>
-
-    <div class="text-center mt-10">
-      <a href="/vendors/"
-         class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-xl transition-all">
-        Browse All Vendors
-        <i class="fa-solid fa-arrow-right text-xs"></i>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ─── WHY CSVN (3 CARDS) ──────────────────────────────────── -->
-<section class="py-16 sm:py-20 bg-slate-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
-
-    <div class="text-center mb-10">
-      <div class="inline-block text-[11px] font-bold uppercase tracking-widest text-indigo-600 mb-3">
-        Why CSVN
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-slate-900 mb-3">
-        Built for <span class="bg-gradient-to-r from-indigo-600 to-emerald-600 bg-clip-text text-transparent">corporate India</span>
-      </h2>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-
-      <div class="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:-translate-y-1 transition-all">
-        <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-tag text-indigo-600 text-lg"></i>
-        </div>
-        <h3 class="text-lg font-bold text-slate-900 mb-2">Founding from ₹3,999</h3>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Three founding plans, 70 slots total. Transparent pricing with no hidden charges.
-        </p>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:-translate-y-1 transition-all">
-        <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-circle-nodes text-emerald-600 text-lg"></i>
-        </div>
-        <h3 class="text-lg font-bold text-slate-900 mb-2">Zero Commission</h3>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Whatever you charge your client, you keep. Your earnings remain entirely yours.
-        </p>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded-2xl p-7 hover:shadow-lg hover:-translate-y-1 transition-all">
-        <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-4">
-          <i class="fa-solid fa-arrows-rotate text-amber-600 text-lg"></i>
-        </div>
-        <h3 class="text-lg font-bold text-slate-900 mb-2">Fair Rotation</h3>
-        <p class="text-sm text-slate-600 leading-relaxed">
-          Listings rotate within their tier so every vendor enjoys fair and equitable visibility.
-        </p>
-      </div>
 
     </div>
-  </div>
-</section>
 
-<!-- ─── FINAL CTA ───────────────────────────────────────────── -->
-<section class="py-16 sm:py-24 bg-gradient-to-br from-[#1e1b4b] via-indigo-700 to-[#4f46e5] text-white text-center">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6">
-
-    <h2 class="text-2xl sm:text-4xl font-black tracking-tight mb-4">
-      Ready to Get Discovered?
-    </h2>
-    <p class="text-indigo-100/90 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-      70 founding slots. Starting at ₹3,999. When a tier sells out, that price is permanently closed.
-    </p>
-
-    <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="https://www.csvn.in/list-your-business/"
-         class="px-7 py-3.5 bg-white text-indigo-700 font-bold text-sm rounded-xl hover:bg-indigo-50 transition-all">
-        <i class="fa-solid fa-plus mr-2"></i>Get Listed Now
+    <div class="flex flex-wrap items-center justify-center gap-3 mt-12">
+      <a href="{{ .Site.Params.youtubeChannel | default "https://www.youtube.com/@CSVNIndia" }}"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2.5 px-6 py-3 bg-white text-slate-900 font-bold text-sm rounded-xl hover:bg-emerald-400 transition-all shadow-lg">
+        <i class="fa-brands fa-youtube text-red-600 text-base"></i>
+        Subscribe on YouTube
       </a>
       <a href="https://wa.me/918793932827" target="_blank" rel="noopener"
-         class="px-7 py-3.5 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold text-sm rounded-xl transition-all">
-        <i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp Us
+         class="inline-flex items-center gap-2.5 px-6 py-3 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold text-sm rounded-xl transition-all shadow-lg">
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        WhatsApp Us
       </a>
     </div>
 
-    <p class="text-indigo-200/70 text-xs mt-6">
-      Or call us directly: <a href="tel:+918793932827" class="font-bold text-white hover:text-emerald-300">+91 87939 32827</a>
-    </p>
-
   </div>
 </section>
+
+<script>
+(function(){
+  'use strict';
+  var buttons = document.querySelectorAll('.csvn-video-thumb');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(){
+      var id = this.getAttribute('data-video-id');
+      if (!id) return;
+      var frame = this.parentElement;
+      var iframe = document.createElement('iframe');
+      iframe.setAttribute('src',
+        'https://www.youtube-nocookie.com/embed/' + id +
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1');
+      iframe.setAttribute('title', 'CSVN Video');
+      iframe.setAttribute('allow',
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.className = 'absolute inset-0 w-full h-full border-0';
+      frame.innerHTML = '';
+      frame.appendChild(iframe);
+    });
+  }
+})();
+</script>
 
 {{ end }}
