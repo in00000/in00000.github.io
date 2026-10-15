@@ -1,0 +1,226 @@
+/* ═══════════════════════════════════════════════════════════
+   CSVN — Global Polish Stylesheet
+   File: static/css/main.css
+   These are refinements Tailwind doesn't handle out of the box.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── SMOOTH SCROLLING ────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 100px; /* Offset for sticky header on anchor jumps */
+}
+
+/* ─── FONT RENDERING ──────────────────────────────────────── */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── CUSTOM SCROLLBAR (Webkit — Chrome, Edge, Safari) ───── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+  border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ─── CUSTOM SCROLLBAR (Firefox) ─────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+}
+
+/* ─── SELECTION COLOR ────────────────────────────────────── */
+::selection {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+/* ─── FOCUS RINGS (Accessibility + Brand Consistency) ────── */
+*:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default focus for mouse clicks, keep for keyboard */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ─── TAP HIGHLIGHT (Mobile) ─────────────────────────────── */
+* {
+  -webkit-tap-highlight-color: rgba(79, 70, 229, 0.1);
+}
+
+/* ─── LINK TRANSITIONS ───────────────────────────────────── */
+a {
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── BUTTON TRANSITIONS ─────────────────────────────────── */
+button,
+a[class*="bg-"],
+a[class*="hover:bg-"] {
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── IMAGE DEFAULTS ─────────────────────────────────────── */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── PREVENT TEXT OVERFLOW ──────────────────────────────── */
+h1, h2, h3, h4, h5, h6,
+p, span, div {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* ─── SMOOTH FADE-IN ANIMATION (for lazy content) ────────── */
+@keyframes csvnFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.csvn-fade-in {
+  animation: csvnFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* ─── PULSING DOT (used in "Founding Round" pill) ────────── */
+@keyframes csvnPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.15);
+  }
+}
+
+.csvn-pulse {
+  animation: csvnPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ─── LOADING SKELETON (future use) ──────────────────────── */
+@keyframes csvnShimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.csvn-skeleton {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 0%,
+    #e2e8f0 50%,
+    #f1f5f9 100%
+  );
+  background-size: 1000px 100%;
+  animation: csvnShimmer 2s infinite linear;
+}
+
+/* ─── PRINT STYLES ───────────────────────────────────────── */
+@media print {
+  .site-header,
+  .site-footer,
+  .csvn-videos,
+  .csvn-video-section,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: underline;
+  }
+
+  .vendor-page,
+  .vendor-card,
+  .csvn-prose {
+    box-shadow: none !important;
+    border: 1px solid #cccccc !important;
+  }
+}
+
+/* ─── REDUCED MOTION (Accessibility) ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── MOBILE OPTIMIZATIONS ───────────────────────────────── */
+@media (max-width: 640px) {
+  /* Prevent iOS zoom on input focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Tighter heading spacing on mobile */
+  h1 {
+    line-height: 1.15;
+  }
+
+  /* Better tap targets */
+  a[class*="px-"],
+  button[class*="px-"] {
+    min-height: 44px;
+  }
+}
+
+/* ─── LANDSCAPE MOBILE ───────────────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .csvn-videos,
+  section[class*="py-16"],
+  section[class*="py-24"] {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
