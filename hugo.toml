@@ -51,14 +51,17 @@ disableKinds = ["RSS", "term"]
     id    = "zulp4R2T8P0"
     title = "Why Great B2B Vendors Stay Invisible in India"
     tag   = "Problem → Solution"
+
   [[params.videos]]
     id    = "mWfHyMC3zx4"
     title = "10 Reasons Vendors Are Joining CSVN"
     tag   = "Why Choose CSVN"
+
   [[params.videos]]
     id    = "lihHqNDvyIk"
     title = "Every Question About CSVN — Answered Honestly"
     tag   = "Real Questions"
+
   [[params.videos]]
     id    = "nZKf0asgBEU"
     title = "From Invisible to Found — One Vendor's Year"
