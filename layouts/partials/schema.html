@@ -1,173 +1,116 @@
-{{/* ─────────────────────────────────────────────────────────────
-     JSON-LD Structured Data
-     Helps Google, Bing, and other search engines understand
-     what each page represents → enables rich search results.
-     ───────────────────────────────────────────────────────────── */}}
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — Structured Data (Schema.org)
+     File: layouts/partials/schema.html
+     Used by: Vendor pages + homepage
+     Purpose: Google rich results — stars, address, phone in SERP
+     ═══════════════════════════════════════════════════════════ -->
 
+{{/* ─── VENDOR PAGE SCHEMA (LocalBusiness) ────────────────── */}}
+{{ if and .IsPage .Params.id .Params.name }}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": {{ .Params.name | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  "description": {{ (.Params.tagline | default .Params.description) | jsonify }},
+  "image": {{ printf "%slogo.png" site.BaseURL | jsonify }},
+  {{ with .Params.phone }}"telephone": {{ . | jsonify }},{{ end }}
+  {{ with .Params.email }}"email": {{ . | jsonify }},{{ end }}
+  {{ with .Params.website }}"sameAs": [{{ . | jsonify }}],{{ end }}
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ .Params.address | default "" | jsonify }},
+    "addressLocality": {{ .Params.city | default "" | jsonify }},
+    "addressRegion": {{ .Params.area | default "" | jsonify }},
+    "addressCountry": "IN"
+  }
+  {{ if and .Params.rating (gt .Params.rating 0) }}
+  ,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": {{ .Params.rating | jsonify }},
+    "reviewCount": {{ .Params.reviewCount | default 0 | jsonify }}
+  }
+  {{ end }}
+  {{ with .Params.services }}
+  ,
+  "makesOffer": [
+    {{ range $i, $s := . }}{{ if $i }},{{ end }}
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": {{ $s | jsonify }}
+      }
+    }
+    {{ end }}
+  ]
+  {{ end }}
+  {{ with .Params.hours }}
+  ,
+  "openingHours": {{ . | jsonify }}
+  {{ end }}
+}
+</script>
+
+{{ end }}
+
+{{/* ─── HOMEPAGE SCHEMA (Organization) ────────────────────── */}}
 {{ if .IsHome }}
 
-  {{/* ── Homepage: Organization ─────────────────────────────────
-       Tells Google your brand name, alternative names, and area
-       served. This is what powers brand searches like "CSVN India".
-       ────────────────────────────────────────────────────────── */}}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "CSVN — Corporate Services Vendor Network",
-    "alternateName": [
-      "CSVN",
-      "CSVN India",
-      "Corporate Services Vendor Network",
-      "CSVN B2B Directory",
-      "CSVN Vendor Network"
-    ],
-    "url": "https://www.csvn.in/",
-    "logo": "https://www.csvn.in/logo.png",
-    "description": "CSVN is a B2B service provider directory helping corporate service vendors build visibility and reach decision-makers across India.",
-    "foundingLocation": {
-      "@type": "Place",
-      "name": "Pune, Maharashtra, India"
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "India"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Customer Support",
-      "email": "info@csvn.in",
-      "telephone": "+91-87939-32827",
-      "areaServed": "IN",
-      "availableLanguage": ["English", "Hindi"]
-    }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CSVN — Corporate Services Vendor Network",
+  "alternateName": "CSVN India",
+  "url": {{ site.BaseURL | jsonify }},
+  "logo": {{ printf "%slogo.png" site.BaseURL | jsonify }},
+  "description": {{ site.Params.description | jsonify }},
+  "email": "info@csvn.in",
+  "telephone": "+91 87939 32827",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nigdi, Pimpri-Chinchwad",
+    "addressLocality": "Pune",
+    "addressRegion": "Maharashtra",
+    "postalCode": "411044",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://www.youtube.com/@CSVNIndia"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-87939-32827",
+    "contactType": "customer service",
+    "areaServed": "IN",
+    "availableLanguage": ["English", "Hindi"]
   }
-  </script>
+}
+</script>
 
-  {{/* ── Homepage: WebSite (search box) ──────────────────────── */}}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+{{ end }}
+
+{{/* ─── CATEGORY PAGE SCHEMA (CollectionPage) ─────────────── */}}
+{{ if and .IsPage (eq .Section "categories") }}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ .Title | jsonify }},
+  "url": {{ .Permalink | jsonify }},
+  "description": {{ printf "Browse corporate service providers in %s on CSVN." .Title | jsonify }},
+  "isPartOf": {
     "@type": "WebSite",
-    "name": {{ .Site.Title }},
-    "url": {{ .Site.BaseURL }},
-    "description": {{ .Site.Params.description }},
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "{{ .Site.BaseURL }}search/?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "name": "CSVN",
+    "url": {{ site.BaseURL | jsonify }}
   }
-  </script>
-
-{{ else if eq .Type "listings" }}
-
-  {{/* ── Individual listing page ───────────────────────────────
-       Only emit LocalBusiness schema for REAL listings.
-       Sample listings are skipped to avoid emitting fake business
-       structured data to Google.
-       ────────────────────────────────────────────────────────── */}}
-  {{ if not .Params.isSample }}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": {{ .Title }},
-    "url": {{ .Permalink }},
-    {{ with .Params.tagline }}"description": {{ . }},{{ end }}
-    {{ with .Params.phone }}"telephone": {{ . }},{{ end }}
-    {{ with .Params.email }}"email": {{ . }},{{ end }}
-    {{ with .Params.website }}"sameAs": {{ . }},{{ end }}
-    {{ with .Params.address }}"address": {
-      "@type": "PostalAddress",
-      "streetAddress": {{ . }},
-      {{ with $.Params.city }}"addressLocality": {{ . }},{{ end }}
-      {{ with $.Params.area }}"addressRegion": {{ . }},{{ end }}
-      "addressCountry": "IN"
-    },{{ end }}
-    {{ with .Params.rating }}{{ if gt . 0 }}"aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": {{ . }},
-      "reviewCount": {{ $.Params.reviewCount | default 1 }}
-    },{{ end }}{{ end }}
-    {{ with .Params.services }}"makesOffer": [
-      {{ range $i, $s := . }}{{ if $i }},{{ end }}{
-        "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": {{ $s }} }
-      }{{ end }}
-    ],{{ end }}
-    "image": "https://www.csvn.in/logo.png"
-  }
-  </script>
-  {{ end }}
-
-  {{/* ── Breadcrumb for listing pages ────────────────────────── */}}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home",       "item": {{ .Site.BaseURL }} },
-      { "@type": "ListItem", "position": 2, "name": "Listings",   "item": "{{ .Site.BaseURL }}listings/" },
-      { "@type": "ListItem", "position": 3, "name": {{ .Title }} }
-    ]
-  }
-  </script>
-
-{{ else if eq .Kind "taxonomy" }}
-
-  {{/* ── Category page: CollectionPage ───────────────────────── */}}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": {{ .Title }},
-    "url": {{ .Permalink }},
-    "description": "Browse {{ .Title }} service providers listed on {{ .Site.Title }}.",
-    "isPartOf": { "@type": "WebSite", "name": {{ .Site.Title }}, "url": {{ .Site.BaseURL }} }
-  }
-  </script>
-
-  {{/* ── Breadcrumb for category pages ───────────────────────── */}}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home",       "item": {{ .Site.BaseURL }} },
-      { "@type": "ListItem", "position": 2, "name": "Categories", "item": "{{ .Site.BaseURL }}categories/" },
-      { "@type": "ListItem", "position": 3, "name": {{ .Title }} }
-    ]
-  }
-  </script>
-
-{{ else if eq .Kind "taxonomyTerm" }}
-
-  {{/* ── All categories page ─────────────────────────────────── */}}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "All Categories",
-    "url": {{ .Permalink }},
-    "description": "Browse all service categories on {{ .Site.Title }}."
-  }
-  </script>
-
-{{ else }}
-
-  {{/* ── Any other page (About, Contact, static) ─────────────── */}}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": {{ .Title }},
-    "url": {{ .Permalink }},
-    "isPartOf": { "@type": "WebSite", "name": {{ .Site.Title }}, "url": {{ .Site.BaseURL }} }
-  }
-  </script>
+}
+</script>
 
 {{ end }}
