@@ -1,5 +1,6 @@
 # ─────────────────────────────────────────────────────────────
 #  CSVN — Corporate Services Vendor Network
+#  File: hugo.toml  (project root)
 # ─────────────────────────────────────────────────────────────
 
 baseURL      = "https://www.csvn.in/"
@@ -9,22 +10,26 @@ timeZone     = "Asia/Kolkata"
 
 disableKinds = ["RSS", "term"]
 
+# ─── Taxonomies ──────────────────────────────────────────────
 [taxonomies]
   category = "categories"
 
+# ─── Pagination ──────────────────────────────────────────────
 [pagination]
   pagerSize = 24
 
+# ─── Sitemap ─────────────────────────────────────────────────
 [sitemap]
   changefreq = "weekly"
   priority   = 0.5
   filename   = "sitemap.xml"
 
+# ─── Site-wide parameters ────────────────────────────────────
 [params]
-  description  = "CSVN — a B2B service provider directory helping corporate service vendors build visibility and reach decision-makers across India."
-  reportEmail  = "info@csvn.in"
-  phone        = "+91 87939 32827"
-  whatsapp     = "918793932827"
+  description    = "CSVN — a B2B service provider directory helping corporate service vendors build visibility and reach decision-makers across India."
+  reportEmail    = "info@csvn.in"
+  phone          = "+91 87939 32827"
+  whatsapp       = "918793932827"
   youtubeChannel = "https://www.youtube.com/@CSVNIndia"
 
   heroTitle    = "Get Discovered by India's Decision-Makers"
@@ -59,13 +64,16 @@ disableKinds = ["RSS", "term"]
     title = "From Invisible to Found — One Vendor's Year"
     tag   = "Vendor Journey"
 
+# ─── Markup ──────────────────────────────────────────────────
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
 
+# ─── Build ───────────────────────────────────────────────────
 [build]
   writeStats = true
 
+# ─── Outputs ─────────────────────────────────────────────────
 [outputs]
   home = ["HTML", "Sitemap"]
