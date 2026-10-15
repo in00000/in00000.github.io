@@ -1,46 +1,131 @@
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — Site Header + Navigation
+     File: layouts/partials/header.html
+     ═══════════════════════════════════════════════════════════ -->
 
-    {{/* ── Brand ─────────────────────────────────────────────── */}}
-    <a href="/" class="flex items-center shrink-0">
-      <img src="/logo.png" alt="CSVN — Corporate Services Vendor Network" class="h-11 w-auto">
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+
+  <!-- ─── TOP ROW: Logo + CTA ─────────────────────────────── -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 shrink-0">
+      <img src="{{ "logo.png" | relURL }}" alt="CSVN" class="h-9 sm:h-10 w-auto">
     </a>
 
-    {{/* ── Desktop Navigation ───────────────────────────────── */}}
-    <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
-      <a href="/categories/" class="hover:text-indigo-600 transition-colors">Categories</a>
-      <a href="/listings/" class="hover:text-indigo-600 transition-colors">All Vendors</a>
-      <a href="/pricing/" class="hover:text-indigo-600 transition-colors">Pricing</a>
-      <a href="/about/" class="hover:text-indigo-600 transition-colors">About</a>
-      <a href="/contact/" class="hover:text-indigo-600 transition-colors">Contact</a>
+    <!-- Top-right CTAs (visible on tablet+) -->
+    <div class="hidden md:flex items-center gap-3">
+      <a href="tel:+918793932827"
+         class="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors flex items-center gap-2">
+        <i class="fa-solid fa-phone text-xs"></i>
+        +91 87939 32827
+      </a>
+      <a href="https://wa.me/918793932827"
+         target="_blank" rel="noopener"
+         class="text-sm font-semibold text-white bg-[#25D366] hover:bg-[#1DA851] px-4 py-2 rounded-lg transition-all flex items-center gap-2">
+        <i class="fa-brands fa-whatsapp"></i>
+        WhatsApp
+      </a>
+      <a href="https://www.csvn.in/list-your-business/"
+         class="text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-all">
+        Get Listed
+      </a>
+    </div>
+
+    <!-- Mobile menu button -->
+    <button id="csvn-menu-btn" type="button"
+            class="md:hidden p-2 text-slate-700 hover:text-indigo-600 transition-colors"
+            aria-label="Toggle menu">
+      <i class="fa-solid fa-bars text-xl"></i>
+    </button>
+  </div>
+
+  <!-- ─── BOTTOM ROW: Nav links (desktop) ─────────────────── -->
+  <nav class="hidden md:block border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <ul class="flex items-center gap-1 py-1 text-sm font-semibold text-slate-600">
+
+        <li>
+          <a href="/" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-indigo-600 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-house text-xs"></i> Home
+          </a>
+        </li>
+
+        <li>
+          <a href="/categories/" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-indigo-600 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-table-cells-large text-xs"></i> Categories
+          </a>
+        </li>
+
+        <li>
+          <a href="/vendors/" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-indigo-600 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-store text-xs"></i> All Vendors
+          </a>
+        </li>
+
+        <li>
+          <a href="/pricing/" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-indigo-600 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-tag text-xs"></i> Pricing
+          </a>
+        </li>
+
+        <li>
+          <a href="/about/" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-indigo-600 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-circle-info text-xs"></i> About
+          </a>
+        </li>
+
+        <li>
+          <a href="/contact/" class="px-3 py-2 rounded-lg hover:bg-slate-100 hover:text-indigo-600 transition-all flex items-center gap-2">
+            <i class="fa-solid fa-envelope text-xs"></i> Contact
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ─── MOBILE MENU (hidden by default) ─────────────────── -->
+  <div id="csvn-mobile-menu" class="hidden md:hidden border-t border-slate-100 bg-white">
+    <nav class="max-w-7xl mx-auto px-4 py-3">
+      <ul class="flex flex-col gap-1 text-sm font-semibold text-slate-700">
+
+        <li><a href="/" class="block px-3 py-3 rounded-lg hover:bg-slate-100 hover:text-indigo-600"><i class="fa-solid fa-house text-xs w-5"></i> Home</a></li>
+        <li><a href="/categories/" class="block px-3 py-3 rounded-lg hover:bg-slate-100 hover:text-indigo-600"><i class="fa-solid fa-table-cells-large text-xs w-5"></i> Categories</a></li>
+        <li><a href="/vendors/" class="block px-3 py-3 rounded-lg hover:bg-slate-100 hover:text-indigo-600"><i class="fa-solid fa-store text-xs w-5"></i> All Vendors</a></li>
+        <li><a href="/pricing/" class="block px-3 py-3 rounded-lg hover:bg-slate-100 hover:text-indigo-600"><i class="fa-solid fa-tag text-xs w-5"></i> Pricing</a></li>
+        <li><a href="/about/" class="block px-3 py-3 rounded-lg hover:bg-slate-100 hover:text-indigo-600"><i class="fa-solid fa-circle-info text-xs w-5"></i> About</a></li>
+        <li><a href="/contact/" class="block px-3 py-3 rounded-lg hover:bg-slate-100 hover:text-indigo-600"><i class="fa-solid fa-envelope text-xs w-5"></i> Contact</a></li>
+
+        <li class="pt-2 border-t border-slate-100 mt-2">
+          <a href="https://wa.me/918793932827" target="_blank" rel="noopener"
+             class="block px-3 py-3 rounded-lg bg-[#25D366] text-white text-center">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+          </a>
+        </li>
+
+        <li>
+          <a href="https://www.csvn.in/list-your-business/"
+             class="block px-3 py-3 rounded-lg bg-indigo-600 text-white text-center">
+            <i class="fa-solid fa-plus"></i> Get Listed
+          </a>
+        </li>
+
+      </ul>
     </nav>
-
-    {{/* ── Right Actions ────────────────────────────────────── */}}
-    <div class="flex items-center gap-2 shrink-0">
-      <a href="/search/"
-         class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-lg text-slate-500 hover:text-indigo-600 hover:bg-slate-100 transition-colors"
-         aria-label="Search">
-        <i class="fa-solid fa-magnifying-glass text-sm"></i>
-      </a>
-      <a href="/list-your-business/"
-         class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-sm font-semibold shadow-sm transition-colors">
-        <i class="fa-solid fa-plus text-xs"></i>
-        <span class="hidden sm:inline">List Your Business</span>
-        <span class="sm:hidden">List</span>
-      </a>
-    </div>
-
   </div>
 
-  {{/* ── Mobile Menu ────────────────────────────────────────── */}}
-  <div class="md:hidden border-t border-slate-100 bg-white">
-    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-1 overflow-x-auto scrollbar-none">
-      <a href="/categories/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Categories</a>
-      <a href="/listings/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Vendors</a>
-      <a href="/pricing/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Pricing</a>
-      <a href="/about/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">About</a>
-      <a href="/contact/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Contact</a>
-      <a href="/search/" class="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-slate-50 rounded-lg whitespace-nowrap transition-colors">Search</a>
-    </div>
-  </div>
 </header>
+
+<!-- ─── MOBILE MENU SCRIPT ─────────────────────────────────── -->
+<script>
+(function(){
+  var btn = document.getElementById('csvn-menu-btn');
+  var menu = document.getElementById('csvn-mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', function(){
+      menu.classList.toggle('hidden');
+    });
+  }
+})();
+</script>
