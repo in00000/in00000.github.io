@@ -1,116 +1,477 @@
+{{ define "main" }}
+
 <!-- ═══════════════════════════════════════════════════════════
-     CSVN — Homepage Video Showcase
-     File: layouts/partials/video-section.html
-     Videos pulled from [params.videos] in hugo.toml
+     CSVN — Homepage
+     File: layouts/index.html
      ═══════════════════════════════════════════════════════════ -->
 
-{{ with .Site.Params.videos }}
-<section class="py-16 sm:py-24 bg-slate-950 text-white relative overflow-hidden" id="videos">
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<section class="relative bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 text-white py-20 sm:py-24 overflow-hidden">
+  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
-  <div class="absolute inset-0 opacity-40 pointer-events-none"
-       style="background-image:radial-gradient(rgba(129,140,248,.18) 1px,transparent 1px);background-size:30px 30px;"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
 
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
-
-    <div class="text-center mb-12">
-      <div class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold uppercase tracking-widest mb-4">
-        Watch · Founding Round 2026
-      </div>
-      <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-white mb-3">
-        {{ $.Site.Params.videosHeading | default "See CSVN in Action" }}
-      </h2>
-      <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
-        {{ $.Site.Params.videosSubheading | default "Four short films on how corporate vendors across India are getting discovered." }}
-      </p>
+    <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-400/30 px-4 py-1.5 rounded-full text-indigo-200 text-xs font-semibold mb-6">
+      <i class="fa-solid fa-shield-halved text-sm"></i>
+      Listed B2B Service Providers across India
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+      Get Discovered by India's Decision-Makers
+    </h1>
 
-      {{ range $index, $video := . }}
-      <div class="group bg-white/[0.04] border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm hover:border-emerald-400/40 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300">
+    <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+      CSVN is a B2B visibility platform that helps corporate service providers reach Purchase Heads, Procurement Heads, HR Heads, Admin Heads, and other decision-makers across India.
+    </p>
 
-        <div class="csvn-video-frame relative aspect-video bg-slate-950 overflow-hidden">
-
-          <button class="csvn-video-thumb absolute inset-0 w-full h-full border-0 p-0 m-0 bg-slate-950 cursor-pointer"
-                  type="button"
-                  aria-label="Play: {{ $video.title }}"
-                  data-video-id="{{ $video.id }}">
-
-            <img src="https://i.ytimg.com/vi/{{ $video.id }}/maxresdefault.jpg"
-                 alt="{{ $video.title }}"
-                 loading="lazy"
-                 class="absolute inset-0 w-full h-full object-cover brightness-75 group-hover:brightness-[.6] group-hover:scale-105 transition-all duration-500"
-                 onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/{{ $video.id }}/hqdefault.jpg';">
-
-            <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-300 drop-shadow-2xl">
-              <svg viewBox="0 0 68 48" width="68" height="48" xmlns="http://www.w3.org/2000/svg">
-                <path d="M66.52 7.74a8.5 8.5 0 0 0-5.99-6.03C55.28 0 34 0 34 0S12.72 0 7.47 1.71a8.5 8.5 0 0 0-5.99 6.03C0 13.03 0 24 0 24s0 10.97 1.48 16.26a8.5 8.5 0 0 0 5.99 6.03C12.72 48 34 48 34 48s21.28 0 26.53-1.71a8.5 8.5 0 0 0 5.99-6.03C68 34.97 68 24 68 24s0-10.97-1.48-16.26z" fill="#ff0000"/>
-                <path d="M45 24 27 14v20" fill="#ffffff"/>
-              </svg>
-            </span>
-
-            {{ with $video.tag }}
-            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-sm border border-emerald-400/40 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">
-              {{ . }}
-            </span>
-            {{ end }}
-
-          </button>
-        </div>
-
-        <div class="p-4 flex items-start gap-3">
-          <span class="text-emerald-400 font-black text-xs tabular-nums leading-relaxed shrink-0">
-            {{ printf "%02d" (add $index 1) }}
-          </span>
-          <h3 class="text-sm font-bold text-white leading-snug tracking-tight">
-            {{ $video.title }}
-          </h3>
-        </div>
-
+    <form action="/search/" method="get" class="max-w-3xl mx-auto bg-white p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-3 items-stretch">
+      <div class="flex-1 flex items-center gap-3 px-4 py-2 border border-slate-200 md:border-none rounded-xl">
+        <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+        <input type="text" name="q" placeholder="Search services, vendors, categories..."
+               class="w-full text-slate-800 placeholder-slate-400 text-sm focus:outline-none bg-transparent">
       </div>
-      {{ end }}
+      <div class="md:w-52 border-t md:border-t-0 md:border-l border-slate-200 md:pl-4 py-2 flex items-center gap-3">
+        <i class="fa-solid fa-map-pin text-slate-400"></i>
+        <select name="hub" class="w-full text-sm text-slate-800 bg-transparent focus:outline-none cursor-pointer">
+          <option value="">All Locations</option>
+          <option value="Pune & Chakan">Pune &amp; Chakan</option>
+          <option value="Mumbai & Thane">Mumbai &amp; Thane</option>
+          <option value="Bangalore Industrial">Bangalore Industrial</option>
+          <option value="Chennai Oragadam">Chennai Oragadam</option>
+          <option value="NCR / Gurgaon">NCR / Gurgaon</option>
+        </select>
+      </div>
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3.5 rounded-xl font-semibold text-sm transition-colors shadow-md shrink-0">
+        Find Vendors
+      </button>
+    </form>
 
-    </div>
-
-    <div class="flex flex-wrap items-center justify-center gap-3 mt-12">
-      <a href="{{ .Site.Params.youtubeChannel | default "https://www.youtube.com/@CSVNIndia" }}"
-         target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2.5 px-6 py-3 bg-white text-slate-900 font-bold text-sm rounded-xl hover:bg-emerald-400 transition-all shadow-lg">
-        <i class="fa-brands fa-youtube text-red-600 text-base"></i>
-        Subscribe on YouTube
-      </a>
-      <a href="https://wa.me/918793932827" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2.5 px-6 py-3 bg-[#25D366] hover:bg-[#1DA851] text-white font-bold text-sm rounded-xl transition-all shadow-lg">
-        <i class="fa-brands fa-whatsapp text-base"></i>
-        WhatsApp Us
-      </a>
+    <div class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs font-medium text-slate-400">
+      <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Listed Business Profiles</div>
+      <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> Direct Contact, No Middlemen</div>
+      <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"></i> No Commission on Deals</div>
     </div>
 
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════════
+     ⭐ VIDEO SECTION — pulled from [params.videos] in hugo.toml
+     ═══════════════════════════════════════════════════════════════ -->
+{{ partial "video-section.html" . }}
+
+<!-- ─── CATEGORIES ───────────────────────────────────────────── -->
+<section id="categories" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Service Directory</span>
+      <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Explore B2B Service Categories</h2>
+    </div>
+    <p class="text-sm text-slate-500 mt-2 md:mt-0">91 categories across 12 service groups.</p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-facility-management">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-broom"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Facility Management</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Cleaning, pest control, waste, landscaping</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">7 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-technical-services">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-bolt"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Technical Services</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">AC, electrical, plumbing, lift, UPS, solar</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">6 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-security-safety">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Security &amp; Safety</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Guards, CCTV, fire safety, access control</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">6 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-it-technology">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-laptop"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">IT &amp; Technology</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">IT support, software, cloud, networking</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">9 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-office-setup">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-couch"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Office Setup &amp; Supplies</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Furniture, interiors, stationery, signage</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">7 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-food-hospitality">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-utensils"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Food &amp; Hospitality</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Catering, canteen, pantry, water, hotels</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">7 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-transport-logistics">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-truck"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Transport &amp; Logistics</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Employee transport, freight, courier, moving</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">9 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-marketing-branding">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-bullhorn"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Marketing &amp; Branding</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Digital marketing, PR, gifting, events</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">10 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-hr-people">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-users"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">HR &amp; People</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Staffing, payroll, training, wellness</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">7 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-finance-legal">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Finance &amp; Legal</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">CA, tax, legal, insurance, compliance</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">9 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-travel-events">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-plane"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Travel &amp; Events</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Corporate travel, visa, MICE, offsites</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">6 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+    <button type="button" class="home-cat-card group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg hover:border-indigo-300 transition-all text-left flex flex-col justify-between" data-target="group-other-services">
+      <div>
+        <div class="w-14 h-14 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition-colors mb-5 border border-indigo-100"><i class="fa-solid fa-briefcase"></i></div>
+        <h3 class="text-base font-extrabold text-slate-900 group-hover:text-indigo-600 transition-colors mb-1.5 leading-snug">Other Corporate Services</h3>
+        <p class="text-xs text-slate-500 leading-relaxed">Industrial, safety, translation, coworking</p>
+      </div>
+      <div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+        <span class="text-slate-400">8 categories</span>
+        <span class="text-indigo-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">Browse <i class="fa-solid fa-arrow-right text-[10px]"></i></span>
+      </div>
+    </button>
+
+  </div>
+
+  <!-- ─── Sub-category panel (populated by JS below) ─── -->
+  <div id="home-cat-panel" class="hidden mt-8 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="flex items-center justify-between gap-3 px-6 py-4 border-b border-slate-100">
+      <div id="home-cat-title" class="text-sm font-extrabold text-slate-900">Select a category</div>
+      <button type="button" id="home-cat-close" class="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors flex items-center justify-center">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div id="home-cat-body" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0"></div>
+  </div>
+
+</section>
+
+<!-- ─── RECENTLY LISTED VENDORS ──────────────────────────────── -->
+<section id="featured" class="py-16 bg-slate-100 border-y border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Recently Added</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">Recently Listed</h2>
+        <p class="text-sm text-slate-500 mt-2">Sample and newly listed service providers on the CSVN network.</p>
+      </div>
+      <a href="/listings/" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors">
+        View all listings <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      {{ $count := 0 }}
+      {{ range $file, $entries := .Site.Data.clients }}
+        {{ range $entries }}
+          {{ if lt $count 6 }}
+            {{ partial "vendor-card.html" (dict "v" . "ctx" $) }}
+            {{ $count = add $count 1 }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── HOW CSVN WORKS ───────────────────────────────────────── -->
+<section id="how-it-works" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <div class="text-center max-w-2xl mx-auto mb-12">
+    <span class="text-xs font-bold uppercase tracking-widest text-indigo-600">Simple &amp; Transparent</span>
+    <h2 class="text-3xl font-extrabold text-slate-900 mt-1 tracking-tight">How CSVN Works</h2>
+    <p class="text-sm text-slate-500 mt-2">A B2B visibility platform built for corporate service providers and the decision-makers who look for them.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+      <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">01</div>
+      <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Create Your Listing</h3>
+      <p class="text-sm text-slate-500 leading-relaxed">Publish a professional business profile with your services, location, and direct contact details on the CSVN directory.</p>
+    </div>
+
+    <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+      <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">02</div>
+      <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Be Visible to Decision-Makers</h3>
+      <p class="text-sm text-slate-500 leading-relaxed">Your listing is discoverable by Purchase Heads, Procurement Heads, HR Heads, Admin Heads, founders, and other decision-makers browsing the platform.</p>
+    </div>
+
+    <div class="bg-white p-7 rounded-2xl border border-slate-200 shadow-sm">
+      <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 font-extrabold text-base flex items-center justify-center mb-5">03</div>
+      <h3 class="text-lg font-extrabold text-slate-900 mb-2 tracking-tight">Connect Directly</h3>
+      <p class="text-sm text-slate-500 leading-relaxed">Buyers reach out to you directly through the contact details on your profile. No middlemen, no commission on your deals.</p>
+    </div>
+
+  </div>
+
+  <p class="text-center text-xs text-slate-400 mt-8 max-w-3xl mx-auto leading-relaxed">
+    CSVN is a visibility platform. Listing or promotional activity does not guarantee enquiries, contracts, or orders.
+  </p>
+
+</section>
+
+<!-- ─── FINAL CTA ────────────────────────────────────────────── -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+  <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 rounded-2xl p-8 sm:p-12 text-white text-center relative overflow-hidden">
+
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto">
+      <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Ready to be discovered by buyers?</h2>
+      <p class="text-sm text-slate-300 mb-6">List your business on CSVN and make your services visible to decision-makers across India.</p>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="/list-your-business/" class="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-slate-900 font-semibold px-6 py-3 rounded-xl text-sm transition-colors shadow-md">
+          <i class="fa-solid fa-plus text-xs"></i> List Your Business
+        </a>
+        <a href="/categories/" class="inline-flex items-center gap-2 bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-400/40 text-white font-semibold px-6 py-3 rounded-xl text-sm transition-colors">
+          <i class="fa-solid fa-table-cells-large text-xs"></i> Browse Categories
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CATEGORY PANEL JS — populates sub-category list when a
+     category card is clicked
+     ═══════════════════════════════════════════════════════════ -->
 <script>
 (function(){
-  'use strict';
-  var buttons = document.querySelectorAll('.csvn-video-thumb');
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function(){
-      var id = this.getAttribute('data-video-id');
-      if (!id) return;
-      var frame = this.parentElement;
-      var iframe = document.createElement('iframe');
-      iframe.setAttribute('src',
-        'https://www.youtube-nocookie.com/embed/' + id +
-        '?autoplay=1&rel=0&modestbranding=1&playsinline=1');
-      iframe.setAttribute('title', 'CSVN Video');
-      iframe.setAttribute('allow',
-        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.className = 'absolute inset-0 w-full h-full border-0';
-      frame.innerHTML = '';
-      frame.appendChild(iframe);
+  "use strict";
+
+  var groups = [
+    { categories: ["housekeeping","deep-cleaning","floor-polishing","pest-control","waste-management","landscaping","plant-rental"], icon: "fa-broom", id: "facility-management", name: "Facility Management", slug: "facility-management", sub: "Cleaning, pest control, waste, landscaping" },
+    { categories: ["ac-hvac","electrical","plumbing","elevator","power-backup","solar"], icon: "fa-bolt", id: "technical-services", name: "Technical Services", slug: "technical-services", sub: "AC, electrical, plumbing, lift, UPS, solar" },
+    { categories: ["security-guards","cctv","fire-safety","access-control","intercom","cybersecurity"], icon: "fa-shield-halved", id: "security-safety", name: "Security & Safety", slug: "security-safety", sub: "Guards, CCTV, fire safety, access control" },
+    { categories: ["it-services","software-development","website-development","app-development","cloud-hosting","it-hardware","networking","crm-saas","data-analytics"], icon: "fa-laptop", id: "it-technology", name: "IT & Technology", slug: "it-technology", sub: "IT support, software, cloud, networking" },
+    { categories: ["office-furniture","office-interiors","office-renovation","stationery","printing-signage","packaging","uniforms"], icon: "fa-couch", id: "office-setup", name: "Office Setup & Supplies", slug: "office-setup", sub: "Furniture, interiors, stationery, signage" },
+    { categories: ["catering","canteen","pantry","water-vending","coffee-vending","hotels","guest-house"], icon: "fa-utensils", id: "food-hospitality", name: "Food & Hospitality", slug: "food-hospitality", sub: "Catering, canteen, pantry, water, hotels" },
+    { categories: ["employee-transport","corporate-cabs","bus-shuttle","vehicle-leasing","courier","freight","warehousing","office-shifting","customs-clearing"], icon: "fa-truck", id: "transport-logistics", name: "Transport & Logistics", slug: "transport-logistics", sub: "Employee transport, freight, courier, moving" },
+    { categories: ["digital-marketing","seo-services","social-media","advertising","pr-agencies","branding","corporate-gifting","event-management","photography","printing"], icon: "fa-bullhorn", id: "marketing-branding", name: "Marketing & Branding", slug: "marketing-branding", sub: "Digital marketing, PR, gifting, events" },
+    { categories: ["staffing","executive-search","payroll","hr-software","training","wellness","team-building"], icon: "fa-users", id: "hr-people", name: "HR & People", slug: "hr-people", sub: "Staffing, payroll, training, wellness" },
+    { categories: ["chartered-accountants","tax-consultants","gst-filing","legal-advisors","company-secretary","business-registration","iso-certification","insurance","financial-advisory"], icon: "fa-scale-balanced", id: "finance-legal", name: "Finance & Legal", slug: "finance-legal", sub: "CA, tax, legal, insurance, compliance" },
+    { categories: ["corporate-travel","visa-services","mice","corporate-events","team-offsites","forex"], icon: "fa-plane", id: "travel-events", name: "Travel & Events", slug: "travel-events", sub: "Corporate travel, visa, MICE, offsites" },
+    { categories: ["industrial-supplies","safety-equipment","manufacturing","rnd","translation","virtual-office","coworking","other"], icon: "fa-briefcase", id: "other-services", name: "Other Corporate Services", slug: "other-services", sub: "Industrial, safety, translation, coworking" }
+  ];
+
+  var subs = [
+    { description: "Daily cleaning for offices, factories, and commercial spaces.", group: "facility-management", id: "housekeeping", name: "Housekeeping & Cleaning", slug: "housekeeping" },
+    { description: "Intensive cleaning, sanitization, and disinfection services.", group: "facility-management", id: "deep-cleaning", name: "Deep Cleaning & Sanitization", slug: "deep-cleaning" },
+    { description: "Marble polishing, floor restoration, and protective coating.", group: "facility-management", id: "floor-polishing", name: "Marble & Floor Polishing", slug: "floor-polishing" },
+    { description: "Fumigation, rodent control, and anti-termite treatment.", group: "facility-management", id: "pest-control", name: "Pest Control", slug: "pest-control" },
+    { description: "Industrial waste disposal, recycling, and compliance.", group: "facility-management", id: "waste-management", name: "Waste Management", slug: "waste-management" },
+    { description: "Corporate landscaping, garden design, and maintenance.", group: "facility-management", id: "landscaping", name: "Landscaping & Gardening", slug: "landscaping" },
+    { description: "Indoor plant rental and maintenance for offices.", group: "facility-management", id: "plant-rental", name: "Office Plant Rental", slug: "plant-rental" },
+    { description: "Air conditioning installation, servicing, and AMC.", group: "technical-services", id: "ac-hvac", name: "AC / HVAC Services", slug: "ac-hvac" },
+    { description: "HT/LT electrical contracting, panel wiring, and repairs.", group: "technical-services", id: "electrical", name: "Electrical Services", slug: "electrical" },
+    { description: "Industrial and commercial plumbing installation and repair.", group: "technical-services", id: "plumbing", name: "Plumbing Services", slug: "plumbing" },
+    { description: "Elevator installation, maintenance, and annual contracts.", group: "technical-services", id: "elevator", name: "Elevator & Lift AMC", slug: "elevator" },
+    { description: "UPS systems, inverters, and backup power solutions.", group: "technical-services", id: "power-backup", name: "UPS & Power Backup", slug: "power-backup" },
+    { description: "Rooftop solar installation and maintenance for businesses.", group: "technical-services", id: "solar", name: "Solar Panel Installation", slug: "solar" },
+    { description: "Trained security personnel for plants, offices, and events.", group: "security-safety", id: "security-guards", name: "Security Guards", slug: "security-guards" },
+    { description: "CCTV installation, monitoring, and video surveillance.", group: "security-safety", id: "cctv", name: "CCTV & Surveillance", slug: "cctv" },
+    { description: "Fire extinguishers, alarms, and safety system installation.", group: "security-safety", id: "fire-safety", name: "Fire & Safety Equipment", slug: "fire-safety" },
+    { description: "Biometric, card, and gate access control systems.", group: "security-safety", id: "access-control", name: "Access Control Systems", slug: "access-control" },
+    { description: "Intercom, EPABX, and communication system providers.", group: "security-safety", id: "intercom", name: "Intercom & EPABX", slug: "intercom" },
+    { description: "Network security, penetration testing, and compliance.", group: "security-safety", id: "cybersecurity", name: "Cybersecurity", slug: "cybersecurity" },
+    { description: "Managed IT services, helpdesk, and annual maintenance.", group: "it-technology", id: "it-services", name: "IT Services & AMC", slug: "it-services" },
+    { description: "Custom software, ERP, and enterprise application development.", group: "it-technology", id: "software-development", name: "Software Development", slug: "software-development" },
+    { description: "Corporate website design, development, and maintenance.", group: "it-technology", id: "website-development", name: "Website Development", slug: "website-development" },
+    { description: "iOS and Android app development for enterprises.", group: "it-technology", id: "app-development", name: "Mobile App Development", slug: "app-development" },
+    { description: "Cloud migration, hosting, and infrastructure management.", group: "it-technology", id: "cloud-hosting", name: "Cloud & Hosting", slug: "cloud-hosting" },
+    { description: "Bulk supply of laptops, desktops, servers, and peripherals.", group: "it-technology", id: "it-hardware", name: "IT Hardware Supply", slug: "it-hardware" },
+    { description: "Structured cabling, LAN, WAN, and network setup.", group: "it-technology", id: "networking", name: "Networking & Cabling", slug: "networking" },
+    { description: "CRM implementation, SaaS onboarding, and integration.", group: "it-technology", id: "crm-saas", name: "CRM & SaaS Setup", slug: "crm-saas" },
+    { description: "Business intelligence, dashboards, and data consulting.", group: "it-technology", id: "data-analytics", name: "Data Analytics", slug: "data-analytics" },
+    { description: "Workstations, chairs, and modular office furniture.", group: "office-setup", id: "office-furniture", name: "Office Furniture", slug: "office-furniture" },
+    { description: "Turnkey interior design and execution for offices.", group: "office-setup", id: "office-interiors", name: "Office Interiors", slug: "office-interiors" },
+    { description: "Office remodeling, partition, and upgrade services.", group: "office-setup", id: "office-renovation", name: "Office Renovation", slug: "office-renovation" },
+    { description: "Bulk office stationery and consumables supply.", group: "office-setup", id: "stationery", name: "Office Stationery", slug: "stationery" },
+    { description: "Corporate printing, signage, and branding material.", group: "office-setup", id: "printing-signage", name: "Printing & Signage", slug: "printing-signage" },
+    { description: "Industrial and retail packaging supply and design.", group: "office-setup", id: "packaging", name: "Packaging Solutions", slug: "packaging" },
+    { description: "Corporate uniforms, safety wear, and staff apparel.", group: "office-setup", id: "uniforms", name: "Uniform Suppliers", slug: "uniforms" },
+    { description: "Corporate catering for events, offices, and factories.", group: "food-hospitality", id: "catering", name: "Corporate Catering", slug: "catering" },
+    { description: "Canteen setup, management, and daily meal services.", group: "food-hospitality", id: "canteen", name: "Canteen Services", slug: "canteen" },
+    { description: "Office pantry supplies, snacks, and beverage management.", group: "food-hospitality", id: "pantry", name: "Pantry Supplies", slug: "pantry" },
+    { description: "Water purifier installation, servicing, and vending.", group: "food-hospitality", id: "water-vending", name: "Water Purifier & Vending", slug: "water-vending" },
+    { description: "Coffee and tea vending machines and supply.", group: "food-hospitality", id: "coffee-vending", name: "Coffee & Tea Vending", slug: "coffee-vending" },
+    { description: "Corporate hotel bookings and long-stay accommodation.", group: "food-hospitality", id: "hotels", name: "Hotels & Accommodation", slug: "hotels" },
+    { description: "Guest house and executive stay arrangements.", group: "food-hospitality", id: "guest-house", name: "Guest House Services", slug: "guest-house" },
+    { description: "Employee pick-up and drop services for businesses.", group: "transport-logistics", id: "employee-transport", name: "Employee Transportation", slug: "employee-transport" },
+    { description: "Corporate cab booking, monthly rentals, and airport transfers.", group: "transport-logistics", id: "corporate-cabs", name: "Corporate Cabs", slug: "corporate-cabs" },
+    { description: "Staff buses and shuttle services for large campuses.", group: "transport-logistics", id: "bus-shuttle", name: "Bus & Shuttle Services", slug: "bus-shuttle" },
+    { description: "Long-term vehicle leasing for corporate fleets.", group: "transport-logistics", id: "vehicle-leasing", name: "Vehicle Leasing", slug: "vehicle-leasing" },
+    { description: "Business courier, same-day delivery, and logistics.", group: "transport-logistics", id: "courier", name: "Couriers & Delivery", slug: "courier" },
+    { description: "Road, rail, air, and sea freight services.", group: "transport-logistics", id: "freight", name: "Freight & Cargo", slug: "freight" },
+    { description: "Warehouse storage and fulfillment services.", group: "transport-logistics", id: "warehousing", name: "Warehousing", slug: "warehousing" },
+    { description: "Complete office relocation and packing services.", group: "transport-logistics", id: "office-shifting", name: "Office Shifting & Relocation", slug: "office-shifting" },
+    { description: "Import/export customs clearance and documentation.", group: "transport-logistics", id: "customs-clearing", name: "Customs Clearing", slug: "customs-clearing" },
+    { description: "Full-service digital marketing and campaign management.", group: "marketing-branding", id: "digital-marketing", name: "Digital Marketing", slug: "digital-marketing" },
+    { description: "Search engine optimization for corporate websites.", group: "marketing-branding", id: "seo-services", name: "SEO Services", slug: "seo-services" },
+    { description: "Social media strategy, content, and paid campaigns.", group: "marketing-branding", id: "social-media", name: "Social Media Marketing", slug: "social-media" },
+    { description: "Print, TV, radio, and outdoor advertising services.", group: "marketing-branding", id: "advertising", name: "Advertising Agencies", slug: "advertising" },
+    { description: "Public relations, press releases, and media outreach.", group: "marketing-branding", id: "pr-agencies", name: "PR Agencies", slug: "pr-agencies" },
+    { description: "Brand identity, logo design, and creative services.", group: "marketing-branding", id: "branding", name: "Branding & Design", slug: "branding" },
+    { description: "Bulk corporate gifts and branded merchandise.", group: "marketing-branding", id: "corporate-gifting", name: "Corporate Gifting", slug: "corporate-gifting" },
+    { description: "Corporate event planning, execution, and production.", group: "marketing-branding", id: "event-management", name: "Event Management", slug: "event-management" },
+    { description: "Corporate photography, videography, and production.", group: "marketing-branding", id: "photography", name: "Photography & Video", slug: "photography" },
+    { description: "Offset and digital printing for corporate needs.", group: "marketing-branding", id: "printing", name: "Printing Services", slug: "printing" },
+    { description: "Permanent and contract staffing for enterprises.", group: "hr-people", id: "staffing", name: "Staffing & Recruitment", slug: "staffing" },
+    { description: "Senior leadership and CXO-level hiring services.", group: "hr-people", id: "executive-search", name: "Executive Search", slug: "executive-search" },
+    { description: "Outsourced payroll processing and compliance.", group: "hr-people", id: "payroll", name: "Payroll Services", slug: "payroll" },
+    { description: "HRMS, attendance, and workforce management software.", group: "hr-people", id: "hr-software", name: "HR Software", slug: "hr-software" },
+    { description: "Corporate training programs and skill development.", group: "hr-people", id: "training", name: "Training & Development", slug: "training" },
+    { description: "Employee wellness, health, and fitness programs.", group: "hr-people", id: "wellness", name: "Corporate Wellness", slug: "wellness" },
+    { description: "Team building activities, retreats, and workshops.", group: "hr-people", id: "team-building", name: "Team Building", slug: "team-building" },
+    { description: "CA services, audit, and financial advisory.", group: "finance-legal", id: "chartered-accountants", name: "Chartered Accountants", slug: "chartered-accountants" },
+    { description: "Income tax, corporate tax, and tax planning.", group: "finance-legal", id: "tax-consultants", name: "Tax Consultants", slug: "tax-consultants" },
+    { description: "GST registration, returns filing, and compliance.", group: "finance-legal", id: "gst-filing", name: "GST Filing Services", slug: "gst-filing" },
+    { description: "Corporate legal counsel and litigation support.", group: "finance-legal", id: "legal-advisors", name: "Legal Advisors", slug: "legal-advisors" },
+    { description: "CS services, ROC filings, and corporate compliance.", group: "finance-legal", id: "company-secretary", name: "Company Secretary", slug: "company-secretary" },
+    { description: "Company incorporation and startup registration.", group: "finance-legal", id: "business-registration", name: "Business Registration", slug: "business-registration" },
+    { description: "ISO, BIS, and other certification consultancy.", group: "finance-legal", id: "iso-certification", name: "ISO Certification", slug: "iso-certification" },
+    { description: "Corporate insurance, health, and general insurance.", group: "finance-legal", id: "insurance", name: "Insurance Brokers", slug: "insurance" },
+    { description: "M&A, fundraising, and financial strategy consulting.", group: "finance-legal", id: "financial-advisory", name: "Financial Advisory", slug: "financial-advisory" },
+    { description: "Business travel management and bookings.", group: "travel-events", id: "corporate-travel", name: "Corporate Travel", slug: "corporate-travel" },
+    { description: "Business visa, passport, and documentation support.", group: "travel-events", id: "visa-services", name: "Visa & Passport Services", slug: "visa-services" },
+    { description: "Meetings, incentives, conferences, and exhibitions.", group: "travel-events", id: "mice", name: "Conference & MICE", slug: "mice" },
+    { description: "Corporate event planning and management services.", group: "travel-events", id: "corporate-events", name: "Corporate Event Planning", slug: "corporate-events" },
+    { description: "Offsite retreats, team trips, and outbound activities.", group: "travel-events", id: "team-offsites", name: "Team Offsites", slug: "team-offsites" },
+    { description: "Foreign exchange, remittance, and travel money cards.", group: "travel-events", id: "forex", name: "Forex Services", slug: "forex" },
+    { description: "MRO supplies, tools, and industrial consumables.", group: "other-services", id: "industrial-supplies", name: "Industrial Supplies", slug: "industrial-supplies" },
+    { description: "PPE, safety gear, and industrial safety products.", group: "other-services", id: "safety-equipment", name: "Safety Equipment", slug: "safety-equipment" },
+    { description: "Contract manufacturing and job work services.", group: "other-services", id: "manufacturing", name: "Manufacturing Services", slug: "manufacturing" },
+    { description: "R&D services, prototyping, and product development.", group: "other-services", id: "rnd", name: "Research & Development", slug: "rnd" },
+    { description: "Document translation, localization, and interpreting.", group: "other-services", id: "translation", name: "Translation Services", slug: "translation" },
+    { description: "Virtual office addresses and business registration.", group: "other-services", id: "virtual-office", name: "Virtual Office", slug: "virtual-office" },
+    { description: "Flexible coworking and managed office spaces.", group: "other-services", id: "coworking", name: "Coworking Spaces", slug: "coworking" },
+    { description: "Miscellaneous corporate services and vendors.", group: "other-services", id: "other", name: "Other Corporate Services", slug: "other" }
+  ];
+
+  var panel = document.getElementById("home-cat-panel");
+  var title = document.getElementById("home-cat-title");
+  var body  = document.getElementById("home-cat-body");
+  var close = document.getElementById("home-cat-close");
+
+  document.querySelectorAll(".home-cat-card").forEach(function(card){
+    card.addEventListener("click", function(){
+      var groupId = card.getAttribute("data-target").replace("group-", "");
+      var group = groups.find(function(g){ return g.id === groupId; });
+      if (!group) return;
+
+      title.textContent = group.name;
+      body.innerHTML = "";
+
+      subs.filter(function(s){ return s.group === groupId; }).forEach(function(s){
+        var a = document.createElement("a");
+        a.href = "/categories/" + s.slug + "/";
+        a.className = "flex items-center justify-between gap-3 px-5 py-3 text-xs font-semibold text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors border-b border-slate-100";
+        a.innerHTML = '<span class="flex items-center gap-2.5 min-w-0"><i class="fa-solid fa-circle text-indigo-300 text-[6px]"></i><span class="truncate">' + s.name + '</span></span><i class="fa-solid fa-arrow-right text-slate-300 text-[10px]"></i>';
+        body.appendChild(a);
+      });
+
+      panel.classList.remove("hidden");
+      panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
-  }
+  });
+
+  close.addEventListener("click", function(){
+    panel.classList.add("hidden");
+  });
+
 })();
 </script>
 
