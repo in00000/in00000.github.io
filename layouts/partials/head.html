@@ -45,6 +45,9 @@
 <!-- ─── ICONS (Font Awesome) ──────────────────────────────── -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<!-- ─── CSVN GLOBAL POLISH CSS ─────────────────────────────── -->
+<link rel="stylesheet" href="/css/main.css">
+
 <!-- ─── TAILWIND CSS ──────────────────────────────────────── -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -80,26 +83,5 @@
   .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 </style>
 
-<!-- ─── VIDEO SCHEMA (only on homepage) ───────────────────── -->
-{{ if .IsHome }}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "CSVN — Corporate Services Vendor Network",
-  "url": "{{ .Site.BaseURL }}",
-  "logo": "{{ .Site.BaseURL }}logo.png",
-  "email": "info@csvn.in",
-  "telephone": "+91 87939 32827",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Pune",
-    "addressRegion": "Maharashtra",
-    "addressCountry": "IN"
-  },
-  "sameAs": [
-    "https://www.youtube.com/@CSVNIndia"
-  ]
-}
-</script>
-{{ end }}
+<!-- ─── STRUCTURED DATA (Schema.org) ──────────────────────── -->
+{{ partial "schema.html" . }}
