@@ -1,0 +1,27 @@
+{{- /* ─────────────────────────────────────────────────────
+     CSVN — Auto-generate category pages from data/clients/
+     File: content/categories/_content.gotmpl
+     ───────────────────────────────────────────────────── */ -}}
+
+{{- $seen := dict -}}
+
+{{- range $file, $entries := site.Data.clients -}}
+  {{- range $entries -}}
+    {{- if not (index $seen .category) -}}
+
+      {{- $seen = merge $seen (dict .category true) -}}
+      {{- $label := .category | humanize | title -}}
+
+      {{- $.AddPage (dict
+          "path"  (printf "categories/%s" .category)
+          "title" $label
+          "kind"  "page"
+          "params" (dict
+            "slug"  .category
+            "label" $label
+          )
+      ) -}}
+
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
