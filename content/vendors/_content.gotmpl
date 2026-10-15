@@ -1,0 +1,49 @@
+{{- range $file, $entries := site.Data.clients -}}
+  {{- range $entries -}}
+
+    {{- $desc := "" -}}
+    {{- if .tagline -}}
+      {{- $desc = .tagline -}}
+    {{- else -}}
+      {{- $desc = printf "%s — %s in %s. Listed on CSVN, India's B2B corporate services directory." .name (.category | humanize | title) .city -}}
+    {{- end -}}
+
+    {{- $path := printf "vendors/%s" .id -}}
+
+    {{- $.AddPage (dict
+        "path"  $path
+        "title" .name
+        "kind"  "page"
+        "params" (dict
+          "id"           .id
+          "name"         .name
+          "tagline"      .tagline
+          "category"     .category
+          "tier"         .tier
+          "order"        .order
+          "city"         .city
+          "area"         .area
+          "rating"       .rating
+          "reviewCount"  .reviewCount
+          "since"        .since
+          "experience"   .experience
+          "status"       .status
+          "phone"        .phone
+          "whatsapp"     .whatsapp
+          "email"        .email
+          "website"      .website
+          "address"      .address
+          "hours"        .hours
+          "mapUrl"       .mapUrl
+          "about"        .about
+          "services"     .services
+          "catalogues"   .catalogues
+          "clients"      .clients
+          "reviews"      .reviews
+          "social"       .social
+          "description"  $desc
+          "source_file"  $file
+        )
+    ) -}}
+  {{- end -}}
+{{- end -}}
