@@ -5,7 +5,7 @@ description: "CSVN's Terms of Service — the rules and guidelines for using our
 
 **Last updated:** January 2026
 
-Welcome to CSVN — Corporate Services Vendor Network ("CSVN", "we", "us", "our"). By accessing or using our website and services, you agree to these Terms of Service.
+Welcome to CSVN — Corporate Services Vendor Network. By accessing or using our website and services, you agree to these Terms of Service.
 
 ## 1. About CSVN
 
@@ -18,7 +18,7 @@ CSVN is an India-focused B2B visibility and promotion network. We connect corpor
 By using CSVN, you confirm that:
 
 - You are at least 18 years of age
-- You have the authority to represent the business you are listing
+- You have authority to represent the business you are listing
 - The information you provide is accurate and up to date
 - Your business provides legitimate corporate services
 
@@ -28,11 +28,7 @@ By using CSVN, you confirm that:
 You are responsible for the accuracy of all information in your listing.
 
 ### 3.2 Content Standards
-Listings must not contain:
-- False or misleading information
-- Content that infringes on third-party rights
-- Illegal services or offerings
-- Offensive, discriminatory, or harmful content
+Listings must not contain false or misleading information, content that infringes on third-party rights, illegal services, or offensive content.
 
 ### 3.3 Right to Refuse or Remove
 CSVN reserves the right to refuse or remove any listing at our discretion.
@@ -53,11 +49,7 @@ CSVN reserves the right to refuse or remove any listing at our discretion.
 
 ## 6. No Guarantees
 
-CSVN provides visibility and promotion. We do **not** guarantee:
-- Specific lead volumes
-- Sales or revenue
-- Business growth
-- Placement on specific search results
+CSVN provides visibility and promotion. We do **not** guarantee specific lead volumes, sales, revenue, business growth, or placement on specific search results.
 
 ## 7. Commission
 
@@ -83,6 +75,6 @@ These Terms are governed by the laws of India. Disputes are subject to the juris
 
 For legal correspondence:
 
-**Email:** info@csvn.in  
-**Phone:** +91 87939 32827  
-**Address:** Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India
+- **Email:** info@csvn.in
+- **Phone:** +91 87939 32827
+- **Address:** Nigdi, Pimpri-Chinchwad, Pune, Maharashtra, India
