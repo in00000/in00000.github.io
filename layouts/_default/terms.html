@@ -6,14 +6,21 @@
 
 {{ define "main" }}
 
-{{/* ─── Collect unique categories + count vendors per category ─── */}}
-{{ $cats := dict }}
+{{/* ─── Collect unique categories + count vendors per category ───
+     Uses newScratch for reliable state across nested ranges in Hugo */}}
+{{ $scratch := newScratch }}
+{{ $scratch.Set "cats" dict }}
+
 {{ range $file, $entries := .Site.Data.clients }}
   {{ range $entries }}
-    {{ $current := index $cats .category | default 0 }}
-    {{ $cats = merge $cats (dict .category (add $current 1)) }}
+    {{ $currentDict := $scratch.Get "cats" }}
+    {{ $currentCount := index $currentDict .category | default 0 }}
+    {{ $newDict := merge $currentDict (dict .category (add $currentCount 1)) }}
+    {{ $scratch.Set "cats" $newDict }}
   {{ end }}
 {{ end }}
+
+{{ $cats := $scratch.Get "cats" }}
 
 <!-- ═══════════════════════════════════════════════════════════
      HERO
