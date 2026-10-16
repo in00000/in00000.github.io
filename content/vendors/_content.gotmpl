@@ -8,8 +8,7 @@
       {{- $desc = printf "%s — %s in %s. Listed on CSVN, India's B2B corporate services directory." .name (.category | humanize | title) .city -}}
     {{- end -}}
 
-    {{- $path := printf "vendors/%s" .id -}}
-
+    {{- $path := printf "%s" .id -}}
     {{- $.AddPage (dict
         "path"  $path
         "title" .name
