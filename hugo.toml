@@ -10,10 +10,6 @@ timeZone     = "Asia/Kolkata"
 
 disableKinds = ["RSS", "term"]
 
-# ─── Taxonomies ──────────────────────────────────────────────
-[taxonomies]
-  category = "categories"
-
 # ─── Pagination ──────────────────────────────────────────────
 [pagination]
   pagerSize = 24
@@ -43,7 +39,6 @@ disableKinds = ["RSS", "term"]
     "NCR / Gurgaon"
   ]
 
-  # ─── Homepage videos ─────────────────────────────────────
   videosHeading    = "See CSVN in Action"
   videosSubheading = "Four short films on how corporate vendors across India are getting discovered."
 
