@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+{{ $all := slice }}
+{{ range $file, $entries := .Site.Data.clients }}
+  {{ range $entries }}
+    {{ $all = $all | append . }}
+  {{ end }}
+{{ end }}
+
+<section class="bg-gradient-to-br from-[#1e1b4b] via-indigo-700 to-[#4f46e5] text-white pt-24 pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+    <nav class="text-xs text-indigo-200 mb-5 flex items-center justify-center gap-2">
+      <a href="/" class="hover:text-white">Home</a>
+      <span class="text-indigo-300/50">›</span>
+      <span class="text-white font-semibold">Listings</span>
+    </nav>
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight mb-4">All Listings</h1>
+    <p class="text-indigo-100/85 max-w-2xl mx-auto text-sm">{{ len $all }} service providers listed on CSVN.</p>
+  </div>
+</section>
+
+<section class="bg-slate-50 py-12 sm:py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    {{ if gt (len $all) 0 }}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {{ range $all }}
+          {{ partial "vendor-card.html" (dict "v" . "ctx" $) }}
+        {{ end }}
+      </div>
+    {{ else }}
+      <div class="bg-white border border-slate-200 rounded-2xl p-16 text-center max-w-2xl mx-auto">
+        <i class="fa-solid fa-store text-indigo-500 text-3xl mb-4"></i>
+        <h2 class="text-xl font-black text-slate-900 mb-3">No listings yet.</h2>
+        <p class="text-slate-500 mb-6 text-sm">Listings appear when vendors are added.</p>
+      </div>
+    {{ end }}
+  </div>
+</section>
+
+{{ end }}
