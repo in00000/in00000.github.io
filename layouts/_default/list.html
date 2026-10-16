@@ -1,117 +1,47 @@
+<!-- ═══════════════════════════════════════════════════════════
+     CSVN — Generic Section Template
+     File: layouts/_default/list.html
+     Used for: /about/, /contact/, /pricing/, /terms/, /privacy/
+     ═══════════════════════════════════════════════════════════ -->
+
 {{ define "main" }}
 
-{{/* ── Sort: by order first, then by tier (Featured → Premium → Standard) ── */}}
-{{ $sorted := sort .Pages "Params.order" "asc" }}
-{{ $sorted = sort $sorted "Params.tier" "asc" }}
+<section class="bg-gradient-to-br from-[#1e1b4b] via-indigo-700 to-[#4f46e5] text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 text-center">
 
-{{/* ── Paginate ─────────────────────────────────────────────── */}}
-{{ $paginator := .Paginate $sorted }}
+    <nav class="text-xs text-indigo-200 mb-5 flex items-center justify-center gap-2">
+      <a href="/" class="hover:text-white transition-colors">Home</a>
+      <span class="text-indigo-300/50">›</span>
+      <span class="text-white font-semibold">{{ .Title }}</span>
+    </nav>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
+      {{ .Title }}
+    </h1>
 
-  {{/* ── Breadcrumb ───────────────────────────────────────────── */}}
-  <nav class="flex items-center gap-2 text-xs text-slate-500 mb-4">
-    <a href="/" class="hover:text-indigo-600 transition-colors">Home</a>
-    <span class="text-slate-300">/</span>
-    <span class="text-slate-800 font-medium">All Vendors</span>
-  </nav>
-
-  {{/* ══════════════════════════════════════════════════════════
-      HEADER (dark gradient hero + search)
-      ══════════════════════════════════════════════════════════ */}}
-  <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-2xl p-8 sm:p-10 mb-6 shadow-sm">
-    <div class="max-w-3xl">
-      <span class="inline-flex items-center gap-2 bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-        <i class="fa-solid fa-shield-halved"></i> Verified Vendor Network
-      </span>
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3">
-        All Vendors
-      </h1>
-      <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-6">
-        {{ len .Pages }} verified vendors across {{ len .Site.Data.categories.groups }} service groups. Use search to find exactly what you need.
-      </p>
-
-      {{/* ── Search (redirects to /search/) ──────────────────── */}}
-      <form action="/search/" method="get" class="flex flex-col sm:flex-row gap-2 bg-white p-2 rounded-xl shadow-lg max-w-2xl">
-        <div class="flex-1 flex items-center gap-3 px-4 py-2.5 rounded-lg">
-          <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
-          <input type="text" name="q" placeholder="Search vendors by name, category, or service..."
-                 class="w-full text-slate-800 placeholder-slate-400 text-sm focus:outline-none bg-transparent">
-        </div>
-        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors shrink-0">
-          Search
-        </button>
-      </form>
-    </div>
-  </div>
-
-  {{/* ══════════════════════════════════════════════════════════
-      VENDOR GRID
-      ══════════════════════════════════════════════════════════ */}}
-  {{ if $paginator.Pages }}
-
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" data-shuffle="true"> 
-  {{ range $paginator.Pages }}
-        {{ partial "client-card.html" .Params }}
-      {{ end }}
-    </div>
-
-    {{/* ══════════════════════════════════════════════════════════
-        PAGINATION — compact (works at any scale)
-        ══════════════════════════════════════════════════════════ */}}
-    {{ if gt $paginator.TotalPages 1 }}
-      <nav class="flex items-center justify-center gap-2 mt-10">
-
-        {{/* Prev */}}
-        {{ if $paginator.HasPrev }}
-          <a href="{{ $paginator.Prev.URL }}"
-             class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:border-indigo-500 hover:text-indigo-600 transition-colors">
-            <i class="fa-solid fa-chevron-left text-[10px]"></i> Prev
-          </a>
-        {{ else }}
-          <span class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-slate-300 bg-white border border-slate-100 rounded-lg cursor-not-allowed">
-            <i class="fa-solid fa-chevron-left text-[10px]"></i> Prev
-          </span>
-        {{ end }}
-
-        {{/* Page indicator */}}
-        <span class="px-4 py-2 text-xs font-bold text-slate-700 bg-white border border-slate-200 rounded-lg">
-          Page {{ $paginator.PageNumber }} <span class="text-slate-400 font-medium">of</span> {{ $paginator.TotalPages }}
-        </span>
-
-        {{/* Next */}}
-        {{ if $paginator.HasNext }}
-          <a href="{{ $paginator.Next.URL }}"
-             class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-lg hover:border-indigo-500 hover:text-indigo-600 transition-colors">
-            Next <i class="fa-solid fa-chevron-right text-[10px]"></i>
-          </a>
-        {{ else }}
-          <span class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-slate-300 bg-white border border-slate-100 rounded-lg cursor-not-allowed">
-            Next <i class="fa-solid fa-chevron-right text-[10px]"></i>
-          </span>
-        {{ end }}
-
-      </nav>
+    {{ with .Description }}
+    <p class="text-indigo-100/85 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+      {{ . }}
+    </p>
     {{ end }}
 
-  {{ else }}
+  </div>
+</section>
 
-    {{/* ── Empty state ─────────────────────────────────────────── */}}
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-12 text-center">
-      <div class="w-16 h-16 mx-auto rounded-full bg-slate-100 flex items-center justify-center mb-4">
-        <i class="fa-solid fa-folder-open text-2xl text-slate-300"></i>
+<section class="py-12 sm:py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+    {{ if .Content }}
+      <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed">
+        {{ .Content }}
       </div>
-      <h3 class="text-lg font-bold text-slate-900 mb-1">No vendors listed yet</h3>
-      <p class="text-sm text-slate-500 mb-5 max-w-sm mx-auto">
-        Our vendor network is being built. Check back soon or browse categories.
+    {{ else }}
+      <p class="text-slate-500 text-center italic py-10">
+        Content coming soon.
       </p>
-      <a href="/categories/" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors">
-        <i class="fa-solid fa-table-cells-large text-xs"></i> Browse Categories
-      </a>
-    </div>
+    {{ end }}
 
-  {{ end }}
-
-</div>
+  </div>
+</section>
 
 {{ end }}
