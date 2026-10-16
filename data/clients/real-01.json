@@ -1,0 +1,75 @@
+[
+  {
+    "id": "sample-vendor-1",
+    "name": "Sample Vendor 1 — Pest Control",
+    "tagline": "Commercial pest control for offices and factories in Pune",
+    "category": "pest-control",
+    "tier": "Standard",
+    "order": 1,
+    "city": "Pune",
+    "area": "Maharashtra",
+    "rating": 4.8,
+    "reviewCount": 12,
+    "since": 2008,
+    "experience": "18+ Years",
+    "status": "Listed",
+    "phone": "+91 98220 12345",
+    "whatsapp": "+91 98220 12345",
+    "email": "info@example.com",
+    "website": "https://example.com",
+    "address": "Shop 5, MIDC, Bhosari, Pune",
+    "hours": "Mon-Sat: 9 AM - 7 PM",
+    "mapUrl": "https://maps.google.com/?q=Bhosari+Pune",
+    "about": [
+      "Sample vendor profile for demonstration. This vendor has served Pune and Pimpri-Chinchwad for over 18 years.",
+      "We specialise in commercial and residential pest control, termite treatment, and rodent management."
+    ],
+    "services": [
+      "General Pest Control",
+      "Termite Treatment",
+      "Rodent Management",
+      "Mosquito Control",
+      "Annual Maintenance Contracts"
+    ],
+    "catalogues": [
+      {
+        "title": "Company Profile 2026",
+        "url": "https://example.com/brochure-1.pdf",
+        "type": "PDF",
+        "size": "2.4 MB"
+      },
+      {
+        "title": "Service Rate Card",
+        "url": "https://example.com/rates.pdf",
+        "type": "PDF",
+        "size": "890 KB"
+      },
+      {
+        "title": "Client Testimonials",
+        "url": "https://example.com/clients.pdf",
+        "type": "PDF",
+        "size": "1.2 MB"
+      },
+      {
+        "title": "Product Catalogue",
+        "url": "https://example.com/catalogue.pdf",
+        "type": "PDF",
+        "size": "3.8 MB"
+      }
+    ],
+    "clients": ["Example Corp", "Demo Industries", "Sample Ltd"],
+    "reviews": [
+      {
+        "name": "Rajesh Kumar",
+        "rating": 5,
+        "text": "Excellent service. Very professional team.",
+        "date": "Jan 2026"
+      }
+    ],
+    "social": {
+      "facebook": "",
+      "instagram": "",
+      "youtube": ""
+    }
+  }
+]
