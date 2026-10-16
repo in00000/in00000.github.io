@@ -1,4 +1,41 @@
 {{ define "main" }}
-<h1>TEST PAGE: {{ .Title }}</h1>
-<p>If you see this, the template works.</p>
+
+<section class="bg-gradient-to-br from-[#1e1b4b] via-indigo-700 to-[#4f46e5] text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 text-center">
+
+    <nav class="text-xs text-indigo-200 mb-5 flex items-center justify-center gap-2">
+      <a href="/" class="hover:text-white transition-colors">Home</a>
+      <span class="text-indigo-300/50">›</span>
+      <span class="text-white font-semibold">{{ .Title }}</span>
+    </nav>
+
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
+      {{ .Title }}
+    </h1>
+
+    {{ with .Description }}
+    <p class="text-indigo-100/85 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+      {{ . }}
+    </p>
+    {{ end }}
+
+  </div>
+</section>
+
+<section class="py-12 sm:py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+
+    {{ if .Content }}
+      <div class="text-slate-700 leading-relaxed space-y-4">
+        {{ .Content }}
+      </div>
+    {{ else }}
+      <p class="text-slate-500 text-center italic py-10">
+        Content coming soon.
+      </p>
+    {{ end }}
+
+  </div>
+</section>
+
 {{ end }}
